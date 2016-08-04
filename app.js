@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var index = require('./routes/index');
-var api = require('./routes/api');
+var donors_api = require('./routes/donors_api');
 //var authenticate = require('./routes/authenticate')(passport);
 var mongoose = require('mongoose');
 
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //initPassport(passport);
 
 app.use('/', index);
-app.use('/api', api);
+app.use('/donors_api', donors_api);
 //app.use('/auth', authenticate);
 
 // catch 404 and forward to error handler
