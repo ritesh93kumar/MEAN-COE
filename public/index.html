@@ -21,6 +21,9 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
+	
+	<link href="stylesheets/login.css" rel="stylesheet">	
+
     <!-- Theme CSS -->
     <link href="css/agency.min.css" rel="stylesheet">
 
@@ -67,6 +70,10 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+					<li>
+                        <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#myModal">SignUp</a>
+						
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -74,6 +81,69 @@
         <!-- /.container-fluid -->
     </nav>
 
+	
+	
+	<div class="container">
+  <h2>Modal Example</h2>
+  <!-- Trigger the modal with a button -->
+  <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">signup</button>-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        </div>
+        <div class="modal-body">
+   
+    <label><b>Username</b></label>
+    <input type="text" ng-model="username" placeholder="Enter Username" name="username" required>
+
+    <label><b>Email</b></label>
+    <input type="email" ng-model="email" placeholder="Enter email" name="email" required>
+        
+    <label><b>Phone NO</b></label>
+    <input type="text"  ng-model="pNo" placeholder="Enter Contact Number"  name="pNo" maxlength="10">
+
+    <label><b>Password </b></label>
+    <input type="password" ng-model="password" placeholder="Enter Password" name="password" required>
+
+    <label><b>Confirm Password </b></label>
+    <input type="password" ng-model="confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+
+    <label><b>Address :</b></label>
+	
+	Select the Country :
+	<select ng-model="selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select>
+	<br />
+	State in the above country :
+	<select ng-model="selectState" name ="state" id ="state"></select>
+	<script language="javascript">print_country("country");</script>
+	
+	<br>
+	
+	
+    <button class="loginbtn" type="submit">SignUp</button>
+	<button id="close" data-dismiss="modal">Close</button>
+    
+            </div>
+        
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+	
+	
+	
+	
+	
     <!-- Header -->
     <header>
         <div class="container">
