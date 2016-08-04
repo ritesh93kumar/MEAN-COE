@@ -11,7 +11,9 @@ var api = require('./routes/api');
 //var authenticate = require('./routes/authenticate')(passport);
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/chirp');
+if(mongoose.connect('mongodb://localhost/chirp')){
+    console.log("connection successfull");
+};
 
 var app = express();
 
