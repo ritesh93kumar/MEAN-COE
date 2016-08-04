@@ -10,7 +10,7 @@ router.route('/doners')
         res.send({message: 'all doners'});
     })
     //create doner
-    .psot(function(req, res){
+    .post(function(req, res){
         res.send({message: 'new doner created'});
     });
 
@@ -19,15 +19,15 @@ router.route('/doners')
 router.route('/doners/:id')
     //get doner
     .get(function(req, res){
-        return res.send({message: 'get doner' + req.param.id});
+        return res.send({message: 'get doner' + req.params.id});
     })
     //create doner
     .post(function(req, res){
-        return res.send({message: 'create doner' + req.param.id});
+        return res.send({message: 'create doner' + req.params.id});
     })
     //delete doner
     .delete(function(req, res){
-        return res.send({message: 'doner deleted !!' + req.param.id});
+        return res.send({message: 'doner deleted !!' + req.params.id});
     });
 
 module.exports = router;
