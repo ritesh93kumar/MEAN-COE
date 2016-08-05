@@ -1,16 +1,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var donerSchema = new mongoose.Schema({
+var donorSchema = new mongoose.Schema({
 	name: String,
-	address: { street1: String, street2: String, city: String, state: String, zip_code: Number, country:String},
+	address: {city: String, state: String, zip_code: Number, country:String},
 	email: String,
     contact_no: Number
 });
 
 var orphanageSchema = new mongoose.Schema({
 	name: String,
-	address: { street1: String, street2: String, city: String, state: String, zip_code: Number, country:String},
+	address: { city: String, state: String, zip_code: Number, country:String},
 	email: String,
     contact_no: Number,
     authenticated: {type:Boolean, default:false},
@@ -31,7 +31,7 @@ var postSchema = new mongoose.Schema({
 	creation_date: {type: Date, default: Date.now},
     expiry_date: {type: Date, default: Date.now},
     updation_date: {type: Date, default: Date.now},
-    activated:{type: Boolean, default: false};
+    activated:{type: Boolean, default: false}
 });
 
 var loginSchema = new mongoose.Schema({
@@ -41,7 +41,7 @@ var loginSchema = new mongoose.Schema({
 	created_at: {type: Date, default: Date.now}
 })
 
-mongoose.model('Doners', donerSchema);
+mongoose.model('Donors', donorSchema);
 mongoose.model('Orphanages', orphanageSchema);
 mongoose.model('Donations', donationSchema);
 mongoose.model('Posts', postSchema);
