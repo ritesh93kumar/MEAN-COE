@@ -7,22 +7,16 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
 var index = require('./routes/index');
-<<<<<<< HEAD
-var donorapi = require('./routes/donorapi');
-var orphanageapi=require('./routes/orphangeapi')
 
-//var authenticate = require('./routes/authenticate')(passport);
-var mongoose = require('mongoose');
 
-if(mongoose.connect('mongodb://localhost/EasyDonationsdb')){
-=======
+var orphanageapi=require('./routes/orphangeapi');
 var donors_api = require('./routes/donors_api');
 var post_api  = require('./routes/post_api');
 var authenticate = require('./routes/authenticate')(passport);
 var mongoose = require('mongoose');
 
 if(mongoose.connect('mongodb://localhost/easyDonations')){
->>>>>>> 49857ded248ca2532ce4ed1d5a46ce886100cbbb
+
     console.log("connection successfull");
 };
 
@@ -48,15 +42,15 @@ var initPassport = require('./passport-init');
 initPassport(passport);
 
 app.use('/', index);
-<<<<<<< HEAD
-app.use('/donorapi', donorapi);
+
+app.use('/donors_api', donors_api);
 app.use('/orphanageapi', orphanageapi);
 //app.use('/auth', authenticate);
-=======
+
 app.use('/donors_api', donors_api);
 app.use('/post_api', post_api);
 app.use('/auth', authenticate);
->>>>>>> 49857ded248ca2532ce4ed1d5a46ce886100cbbb
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

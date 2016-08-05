@@ -1,11 +1,7 @@
 var Orphanages=require('../models/models');
 var express = require('express');
-
 var mongoose=require('mongoose');
-
 var router = express.Router();
-
-
 var Orphanages=mongoose.model('Orphanages');
 //api for all orphanages
 router.route('/orphanages')
@@ -21,6 +17,7 @@ router.route('/orphanages')
        }); 
         
     })
+
     //create orphanage
     .post(function(req, res){
         orphange=new Orphanages();
@@ -50,7 +47,7 @@ router.route('/orphanages/:id')
               res.send("Cannot retrieve Orphanages");
            else{
              
-               res.send(result);
+               res.send({message:"Retrieved "},result);
            }
        }); 
        
