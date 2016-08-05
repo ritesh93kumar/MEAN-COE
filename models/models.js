@@ -31,7 +31,7 @@ var postSchema = new mongoose.Schema({
 	creation_date: {type: Date, default: Date.now},
     expiry_date: {type: Date, default: Date.now},
     updation_date: {type: Date, default: Date.now},
-    activated:{type: Boolean, default: false};
+    activated:{type: Boolean, default: false}
 });
 
 var loginSchema = new mongoose.Schema({

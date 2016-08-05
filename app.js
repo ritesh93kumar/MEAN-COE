@@ -8,10 +8,11 @@ var passport = require('passport');
 var session = require('express-session');
 var index = require('./routes/index');
 var donors_api = require('./routes/donors_api');
-//var authenticate = require('./routes/authenticate')(passport);
+var post_api  = require('./routes/post_api');
+var authenticate = require('./routes/authenticate')(passport);
 var mongoose = require('mongoose');
 
-if(mongoose.connect('mongodb://localhost/chirp')){
+if(mongoose.connect('mongodb://localhost/easyDonations')){
     console.log("connection successfull");
 };
 
@@ -29,16 +30,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Initialize Passport
-//var initPassport = require('./passport-init');
-//initPassport(passport);
+var initPassport = require('./passport-init');
+initPassport(passport);
 
 app.use('/', index);
 app.use('/donors_api', donors_api);
-//app.use('/auth', authenticate);
+app.use('/post_api', post_api);
+app.use('/auth', authenticate);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
