@@ -15,9 +15,13 @@ var post_api  = require('./routes/post_api');
 var authenticate = require('./routes/authenticate')(passport);
 var mongoose = require('mongoose');
 
-if(mongoose.connect('mongodb://localhost/easyDonations')){
 
-    console.log("connection successfull");
+mongoose.connect('mongodb://localhost/easyDonations'),function(err){
+    // not getting printed on console
+    if(err)
+        console.log("Connection refused");
+     else
+        console.log("connection successfull");  
 };
 
 var app = express();
