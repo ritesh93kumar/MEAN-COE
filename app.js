@@ -9,20 +9,22 @@ var session = require('express-session');
 var index = require('./routes/index');
 
 
-var orphanageapi=require('./routes/orphangeapi');
+var orphanage_api=require('./routes/orphange_api');
 var donors_api = require('./routes/donors_api');
 var post_api  = require('./routes/post_api');
 var authenticate = require('./routes/authenticate')(passport);
 var mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb://localhost/easyDonations'),function(err){
+mongoose.connect('mongodb://localhost/easyDonations', function(err){
     // not getting printed on console
-    if(err)
+    if(err){
         console.log("Connection refused");
+		throw err;
+	}
      else
         console.log("connection successfull");  
-};
+});
 
 var app = express();
 
@@ -48,7 +50,7 @@ initPassport(passport);
 app.use('/', index);
 
 app.use('/api', donors_api);
-app.use('/api', orphanageapi);
+app.use('/api', orphanage_api);
 //app.use('/auth', authenticate);
 
 app.use('/api', post_api);
