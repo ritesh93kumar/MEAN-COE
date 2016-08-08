@@ -35,7 +35,7 @@ router.route('/posts')
         var newPost = new Post();
         newPost.posted_by = req.body.posted_by;
         newPost.claims = req.body.claims;
-        newPost.item = req.body.items;
+        newPost.items = req.body.items;
         newPost.expiry_date = req.body.expiry_date;
         newPost.activated = true;
 
@@ -66,7 +66,7 @@ router.route('/posts/:id')
                     res.send(500, err);
                 }
             post.claims = req.body.claims;
-            post.item = req.body.items;
+            post.items = req.body.items;
             post.updation_date = req.body.updation_date;
             post.expiry_date = req.body.expiry_date;
             post.activated = req.body.activated;
