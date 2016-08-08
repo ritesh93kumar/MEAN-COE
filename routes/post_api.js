@@ -82,7 +82,7 @@ router.route('/posts/:id')
     })
     //delete post
     .delete(function(req, res){
-         Donor.remove({_id:req.params.id}, function(err){
+         Post.remove({_id:req.params.id}, function(err){
             if(err){
                     res.send(500, err);
             }

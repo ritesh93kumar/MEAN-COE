@@ -20,9 +20,9 @@ router.route('/orphanages')
 
     //create orphanage
     .post(function(req, res){
-        orphange=new Orphanages();
+        var orphange = new Orphanages();
         orphange.name=req.body.name;
-        orphange.adddress=req.body.address
+        orphange.adddress=req.body.address;
         orphange.email=req.body.email;
         orphange.contact_no=req.body.contact_no;
         //orphange.adddress.authenticated=req.body.authenticated;
@@ -42,7 +42,7 @@ router.route('/orphanages')
 router.route('/orphanages/:id')
     //get doner
     .get(function(req, res){
-         Orphanages.findOne({'_id':req.params.id},function(err,result){
+         Orphanages.findById({'_id':req.params.id},function(err,result){
           if(err)
               res.send("Cannot retrieve Orphanages");
            else{
@@ -52,7 +52,6 @@ router.route('/orphanages/:id')
        }); 
        
     })
-   
     //delete orphanage
     .delete(function(req, res){
     
