@@ -47,12 +47,11 @@ initPassport(passport);
 
 app.use('/', index);
 
-app.use('/donors_api', donors_api);
-app.use('/orphanageapi', orphanageapi);
+app.use('/api', donors_api);
+app.use('/api', orphanageapi);
 //app.use('/auth', authenticate);
 
-app.use('/donors_api', donors_api);
-app.use('/post_api', post_api);
+app.use('/api', post_api);
 app.use('/auth', authenticate);
 
 
