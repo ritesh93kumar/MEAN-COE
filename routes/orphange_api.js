@@ -32,7 +32,7 @@ router.route('/orphanages')
     .post(function(req, res){
         var orphange=new Orphanages();
         orphange.name=req.body.name;
-        orphange.address={city:"ponda",country:"India"};
+        orphange.address=req.body.address;
         orphange.email=req.body.email;
         orphange.contact_no=req.body.contact_no;
         orphange.authenticated=req.body.authenticated;
