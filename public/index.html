@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="We're all about making Donations Easy. Period!">
+    <meta name="author" content="Easy Donations">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Easy Donations</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,8 @@
 	<link href="stylesheets/login.css" rel="stylesheet">	
 
     <!-- Theme CSS -->
-    <link href="css/agency.min.css" rel="stylesheet">
+	<!--  This should be changed to Minified Version while in production	-->
+    <link href="css/agency.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,7 +47,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Easy Donations</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,10 +57,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#services">Statistics</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll" href="#portfolio">Our Legacy</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#about">About</a>
@@ -83,66 +84,52 @@
 
 	
 	
-	<div class="container">
-  <h2>Modal Example</h2>
-  <!-- Trigger the modal with a button -->
-  <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">signup</button>-->
+	  <!-- Sign Up Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
 
-        </div>
-        <div class="modal-body">
-   
-    <label><b>Username</b></label>
-    <input type="text" ng-model="username" placeholder="Enter Username" name="username" required>
+					<label><b>Username</b></label>
+					<input type="text" ng-model="username" placeholder="Enter Username" name="username" required>
 
-    <label><b>Email</b></label>
-    <input type="email" ng-model="email" placeholder="Enter email" name="email" required>
-        
-    <label><b>Phone NO</b></label>
-    <input type="text"  ng-model="pNo" placeholder="Enter Contact Number"  name="pNo" maxlength="10">
+					<label><b>Email</b></label>
+					<input type="email" ng-model="email" placeholder="Enter email" name="email" required>
 
-    <label><b>Password </b></label>
-    <input type="password" ng-model="password" placeholder="Enter Password" name="password" required>
+					<label><b>Phone NO</b></label>
+					<input type="text"  ng-model="pNo" placeholder="Enter Contact Number"  name="pNo" maxlength="10">
 
-    <label><b>Confirm Password </b></label>
-    <input type="password" ng-model="confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+					<label><b>Password </b></label>
+					<input type="password" ng-model="password" placeholder="Enter Password" name="password" required>
 
-    <label><b>Address :</b></label>
-	
-	Select the Country :
-	<select ng-model="selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select>
-	<br />
-	State in the above country :
-	<select ng-model="selectState" name ="state" id ="state"></select>
-	<script language="javascript">print_country("country");</script>
-	
-	<br>
-	
-	
-    <button class="loginbtn" type="submit">SignUp</button>
-	<button id="close" data-dismiss="modal">Close</button>
-    
-            </div>
-        
-      </div>
-      
-    </div>
-  </div>
-  
+					<label><b>Confirm Password </b></label>
+					<input type="password" ng-model="confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+
+					<label><b>Address :</b></label>
+
+					Select the Country :<br>
+					<select ng-model="selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
+					</select>
+					<br />
+					State in the above country :<br>
+					<select ng-model="selectState" name ="state" id ="state"></select>
+					<script language="javascript">print_country("country");</script>
+
+					<br>
+
+
+					<button type="submit" class="btn btn-rounded loginbtn">SignUp</button>
+					<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-	
-	
-	
-	
 	
     <!-- Header -->
     <header>
