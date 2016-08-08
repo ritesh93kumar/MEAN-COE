@@ -10,9 +10,9 @@ router.route('/orphanages')
     .get(function(req, res){
        Orphanages.find({},function(err,result){
           if(err)
-              res.send("Cannot retrieve Orphanages");
+              return res.send("Cannot retrieve Orphanages");
            else{
-               res.send(result);
+               return res.send(result);
            }
        }); 
         
@@ -20,20 +20,20 @@ router.route('/orphanages')
 
     //create orphanage
     .post(function(req, res){
-        orphange=new Orphanages();
+        var orphange=new Orphanages();
         orphange.name=req.body.name;
         orphange.adddress=req.body.address
         orphange.email=req.body.email;
         orphange.contact_no=req.body.contact_no;
-        //orphange.adddress.authenticated=req.body.authenticated;
+        orphange.authenticated=req.body.authenticated;
         orphange.no_of_people=req.body.no_of_people;
     
         orphange.save(function(err,result){
            if(err){
-               res.send("Cannot Add");
+               return res.send("Cannot Add");
            } 
          
-           res.send(result);
+           return res.send(result);
             
         });
     });
@@ -44,13 +44,37 @@ router.route('/orphanages/:id')
     .get(function(req, res){
          Orphanages.findOne({'_id':req.params.id},function(err,result){
           if(err)
-              res.send("Cannot retrieve Orphanages");
+              return res.send("Cannot retrieve Orphanages");
            else{
              
-               res.send({message:"Retrieved "},result);
+               return res.send({message:"Retrieved "},result);
            }
        }); 
        
+    })
+
+    //update orphanage details
+    .put(function(req, res){
+     
+        Orphanages.findById({'_id':req.params.id},function(err,result){
+           if(err)
+               return res.send("Cannot Find the record");
+            else {
+                result.name=req.body.name;
+                result.adddress=req.body.address
+                result.email=req.body.email;
+                result.contact_no=req.body.contact_no;
+                result.authenticated=req.body.authenticated;
+                result.no_of_people=req.body.no_of_people;
+                
+                result.save(function(err,result){
+                   if(err)
+                       return res.send("cannot update the record");
+                    else
+                        return res.send("Updated");
+                });
+            }
+        });
     })
    
     //delete orphanage
@@ -58,9 +82,9 @@ router.route('/orphanages/:id')
     
      Orphanages.findOneAndRemove({'_id':req.params.id},function(err,result){
        if(err)
-           res.send('Cannot delete');
+           return res.send('Cannot delete');
         else
-            res.send("Deleted");
+            return res.send("Deleted");
         });
     });
 
