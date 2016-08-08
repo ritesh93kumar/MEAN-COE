@@ -33,7 +33,7 @@ router.route('/orphanages')
 
         orphange = new Orphanages();
         orphange.name=req.body.name;
-        orphange.adddress=req.body.address;
+        orphange.address=req.body.address;
         orphange.email=req.body.email;
         orphange.contact_no=req.body.contact_no;
         orphange.authenticated=req.body.authenticated;
