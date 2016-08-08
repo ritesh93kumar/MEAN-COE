@@ -20,8 +20,10 @@ mongoose.connect('mongodb://localhost/easyDonations', function(err){
     // not getting printed on console
     if(err){
         console.log("Connection refused");
+
         throw err;
     }
+
      else
         console.log("connection successfull");  
 });
