@@ -18,8 +18,10 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/easyDonations', function(err){
     // not getting printed on console
-    if(err)
+    if(err){
         console.log("Connection refused");
+        throw err;
+    }
      else
         console.log("connection successfull");  
 });
