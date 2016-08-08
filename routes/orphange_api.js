@@ -53,9 +53,6 @@ router.route('/orphanages/:id')
        }); 
        
     })
-<<<<<<< HEAD
-=======
-
     //update orphanage details
     .put(function(req, res){
      
@@ -79,8 +76,6 @@ router.route('/orphanages/:id')
             }
         });
     })
-   
->>>>>>> e21c88f6de075fc45a4708fa0fc70b2419653392
     //delete orphanage
     .delete(function(req, res){
     
