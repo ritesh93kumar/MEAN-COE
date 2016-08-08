@@ -20,7 +20,7 @@ router.route('/orphanages')
     .get(function(req, res){
        Orphanages.find({},function(err,result){
           if(err)
-              return res.send("Cannot retrieve Orphanages");
+              return res.send(500, err);
            else{
                return res.send(result);
            }
@@ -41,7 +41,7 @@ router.route('/orphanages')
     
         orphange.save(function(err,result){
            if(err){
-               return res.send("Cannot Add");
+               return res.send(500, err);
            } 
          
            return res.send(result);
@@ -55,10 +55,10 @@ router.route('/orphanages/:id')
     .get(function(req, res){
          Orphanages.findById({'_id':req.params.id},function(err,result){
           if(err)
-              return res.send("Cannot retrieve Orphanages");
+              return res.send(500, err);
            else{
              
-               return res.send({message:"Retrieved "},result);
+               return res.send(result);
            }
        }); 
        
@@ -79,9 +79,9 @@ router.route('/orphanages/:id')
                 
                 result.save(function(err,result){
                    if(err)
-                       return res.send("cannot update the record");
+                       return res.send(500, err);
                     else
-                        return res.send("Updated");
+                        return res.send(result);
                 });
             }
         });
@@ -91,7 +91,7 @@ router.route('/orphanages/:id')
     
      Orphanages.findOneAndRemove({'_id':req.params.id},function(err,result){
        if(err)
-           return res.send('Cannot delete');
+           return res.send(result);
         else
             return res.send("Deleted");
         });
