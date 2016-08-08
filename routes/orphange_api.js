@@ -3,9 +3,19 @@ var express = require('express');
 var mongoose=require('mongoose');
 var router = express.Router();
 var Orphanages=mongoose.model('Orphanages');
+
 //api for all orphanages
-router.route('/orphanages')
+
+router.use('/orphanages', function(req, res, next){
+        
+    if(!req.isAuthenticated()){
+        return res.redirect('/#login');
+    }
     
+    return next();
+});
+
+router.route('/orphanages')
     //get all doners
     .get(function(req, res){
        Orphanages.find({},function(err,result){
@@ -61,7 +71,7 @@ router.route('/orphanages/:id')
                return res.send("Cannot Find the record");
             else {
                 result.name=req.body.name;
-                result.adddress=req.body.address
+                result.address=req.body.address
                 result.email=req.body.email;
                 result.contact_no=req.body.contact_no;
                 result.authenticated=req.body.authenticated;
