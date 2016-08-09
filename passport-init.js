@@ -1,5 +1,8 @@
-var User = require('./models/models');
-var mongoose = require('mongoose');   
+var Schema = require('./models/models');
+var mongoose = require('mongoose');
+var Donor = mongoose.model('Donors');
+//var User = require('./models/models');
+   
 var User = mongoose.model('Login');
 var LocalStrategy   = require('passport-local').Strategy;
 var bCrypt = require('bcrypt-nodejs');
@@ -64,10 +67,12 @@ module.exports = function(passport){
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
-            
-        User.findOne({'username':username}, 
+           
+       User.findOne({'username':username}, 
                      function(err, user){
+            
             if(err){
+                
                 return done('Error in singup', err);
             }
             if(user){
@@ -76,21 +81,36 @@ module.exports = function(passport){
             }
             else{
                 var newUser = new User();
-                
+                var donor = new Donor(); 
                 newUser.username = username;
                 newUser.password = createHash(password);
-                
+                donor.name = username;
+                donor.address.country="India";
+                donor.address.state="Goa";
+                donor.address.city="Margao";
+                donor.address.zip_code=590006;
+                donor.email=req.body.email;
+                donor.contact_no=req.body.pNo;
                 newUser.save(function(err){
                     if(err){
                         console.log('error in saving user' + err);
                         throw err;
                     }
                     console.log(newUser.username + 'registration successful');
-                    return done(null, newUser);
+                  return done(null, newUser);
+                });
+                donor.save(function(err){
+                    if(err){
+                        console.log('error in saving Donor Details' + err);
+                        throw err;
+                    }
+                 
+                    console.log("Donor details added ");
                 });
             }
             
         });
+            
             /*if (users[username]){
                 console.log('User already exists with username: ' + username);
                 return done(null, false);
