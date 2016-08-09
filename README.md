@@ -19,4 +19,4 @@ npm install passport-local --save
 npm install bcrypt-nodejs --save
 
 # to start the server: go to app directory and type
-npm start
+  npm start
