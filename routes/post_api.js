@@ -64,9 +64,14 @@ router.route('/posts/:id')
         Post.findById(req.params.id, function(err, post){
             if(err){
                     res.send(500, err);
-                }
-            post.claims = req.body.claims;
-            post.items = req.body.items;
+            }
+            
+            for (var i in req.body.items) {
+                var itemObj = { item: req.body.items[i].item, quantity:req.body.items[i].quantity };
+                post.items.push(itemObj);
+            }
+            
+            post.claims.push(req.body.claims[0]);
             post.updation_date = req.body.updation_date;
             post.expiry_date = req.body.expiry_date;
             post.activated = req.body.activated;
