@@ -19,14 +19,14 @@ var orphanageSchema = new mongoose.Schema({
 });
 
 var donationSchema = new mongoose.Schema({
-	donated_by: {type: Schema.Types.ObjectId, ref:'Doners'},
+	donated_by: {type: Schema.Types.ObjectId, ref:'Donors'},
 	donated_to: {type: Schema.Types.ObjectId, ref:'Orphanages'},
     donated_items: [ {item: String, quantity:Number} ],
 	donation_date: {type: Date, default: Date.now}
 });
 
 var postSchema = new mongoose.Schema({
-	posted_by: {type: Schema.Types.ObjectId, ref:'Doners'},
+	posted_by: {type: Schema.Types.ObjectId, ref:'Donors'},
 	claims: [ {type: Schema.Types.ObjectId, ref:'Orphanages'} ],
     items: [ {item: String, quantity:Number} ],
 	creation_date: {type: Date, default: Date.now},
