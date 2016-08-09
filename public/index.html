@@ -21,9 +21,9 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
-	
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<link href="stylesheets/login.css" rel="stylesheet">	
-
+    <script src="js/controller.js"></script>
     <!-- Theme CSS -->
 	<!--  This should be changed to Minified Version while in production	-->
     <link href="css/agency.css" rel="stylesheet">
@@ -37,7 +37,7 @@
 
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" ng-app="EasyDonations">
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -72,9 +72,13 @@
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
 					<li>
-                        <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#myModal">SignUp</a>
-						
+                        <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#myModal1">Login</a>
+                        
                     </li>
+                    <li>
+                        <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#myModal">signup</a>
+                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -82,9 +86,48 @@
         <!-- /.container-fluid -->
     </nav>
 
-	
-	
+    <!-- Login -->
+	<form ng-submit="login()" ng-controller="loginController">      
+      <!-- Modal -->
+      <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+
+                <label><b>Username</b></label>
+                <input type="text" ng-model="loginInfo.username" placeholder="Enter Username" id="username" name="username" required>
+
+                <label><b>Password</b></label>
+            <input type="password" ng-model="loginInfo.password" placeholder="Enter Password" name="password" id="password" required>
+                <input type="checkbox" checked="checked"> Remember me</input><br>
+                <div style="background-color:#f1f1f1">
+                    <span class="psw"> <a href="#"> Forgot password?</a></span>
+                </div>	
+
+                    <button class="loginbtn"  type="submit" >Login</button> <!-- redirect to home page -->
+                    <button id="close" data-dismiss="modal">Close</button>
+
+            </div>
+            <div class="modal-footer">
+                New user? SignUp 
+            </div>  
+          </div>
+
+        </div>
+      </div>
+</form><!--login controller ends-->
+    
+    
+    
+    
 	  <!-- Sign Up Modal -->
+    <form ng-controller="signUpController" ng-submit="signup()">
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
@@ -96,28 +139,28 @@
 				<div class="modal-body">
 
 					<label><b>Username</b></label>
-					<input type="text" ng-model="username" placeholder="Enter Username" name="username" required>
+					<input type="text" ng-model="signupInfo.username" placeholder="Enter Username" name="username" required>
 
 					<label><b>Email</b></label>
-					<input type="email" ng-model="email" placeholder="Enter email" name="email" required>
+					<input type="email" ng-model="signupInfo.email" placeholder="Enter email" name="email" required>
 
 					<label><b>Phone NO</b></label>
-					<input type="text"  ng-model="pNo" placeholder="Enter Contact Number"  name="pNo" maxlength="10">
+					<input type="text"  ng-model="signupInfo.pNo" placeholder="Enter Contact Number"  name="pNo" maxlength="10">
 
 					<label><b>Password </b></label>
-					<input type="password" ng-model="password" placeholder="Enter Password" name="password" required>
+					<input type="password" ng-model="signupInfo.password" placeholder="Enter Password" name="password" required>
 
 					<label><b>Confirm Password </b></label>
-					<input type="password" ng-model="confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+					<input type="password" ng-model="signupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
 
 					<label><b>Address :</b></label>
 
 					Select the Country :<br>
-					<select ng-model="selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
+					<select ng-model="signupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
 					</select>
 					<br />
 					State in the above country :<br>
-					<select ng-model="selectState" name ="state" id ="state"></select>
+					<select ng-model="signupInfo.selectState" name ="state" id ="state"></select>
 					<script language="javascript">print_country("country");</script>
 
 					<br>
@@ -129,6 +172,7 @@
 			</div>
 		</div>
 	</div>
+    </form><!-- SIGNUP ENDS HERE   -->
 </div>
 	
     <!-- Header -->
