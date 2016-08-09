@@ -18,5 +18,5 @@ npm install passport-local --save
 # install bcrypt-nodejs for handling creating password hashes
 npm install bcrypt-nodejs --save
 
-# start the server go to app directory and type
+# to start the server: go to app directory and type
 npm start
