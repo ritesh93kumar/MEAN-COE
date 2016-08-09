@@ -13,6 +13,7 @@ var orphanage_api=require('./routes/orphange_api');
 var donors_api = require('./routes/donors_api');
 var post_api  = require('./routes/post_api');
 var authenticate = require('./routes/authenticate')(passport);
+var donation_api=require('./routes/donation_api');
 var mongoose = require('mongoose');
 
 
@@ -56,6 +57,7 @@ app.use('/api', orphanage_api);
 app.use('/api', post_api);
 app.use('/auth', authenticate);
 
+app.use('/api',donation_api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
