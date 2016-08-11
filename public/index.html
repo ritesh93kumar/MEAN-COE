@@ -23,7 +23,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<link href="stylesheets/login.css" rel="stylesheet">	
-    <script src="js/controller.js"></script>
+    <script src="angular-client/app/controllers/loginController.js"></script>
+    <script src="angular-client/app/controllers/signupController.js"></script>
+        
+    
     <!-- Theme CSS -->
 	<!--  This should be changed to Minified Version while in production	-->
     <link href="css/agency.css" rel="stylesheet">
@@ -74,9 +77,6 @@
 					<li>
                         <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#myModal1">Login</a>
                         
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#myModal">signup</a>
                     </li>
                     
                 </ul>
@@ -139,7 +139,7 @@
 				<div class="modal-body">
 
 					<label><b>Username</b></label>
-					<input type="text" ng-model="signupInfo.username" placeholder="Enter Username" name="username" required>
+					<input type="text" ng-model="signupInfo.username" placeholder="Enter Username"  required>
 
 					<label><b>Email</b></label>
 					<input type="email" ng-model="signupInfo.email" placeholder="Enter email" name="email" required>
@@ -181,7 +181,8 @@
             <div class="intro-text">
                 <div class="intro-lead-in">Welcome To Our Studio!</div>
                 <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+                <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#myModal">signup</a>
+                <a href="#services" class="page-scroll btn btn-xl">Register Orphanage</a>
             </div>
         </div>
     </header>

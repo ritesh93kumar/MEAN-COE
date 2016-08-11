@@ -16,6 +16,7 @@ var orphanageSchema = new mongoose.Schema({
     contact_no: Number,
     authenticated: {type:Boolean, default:false},
     no_of_people: Number
+    
 });
 
 var donationSchema = new mongoose.Schema({
