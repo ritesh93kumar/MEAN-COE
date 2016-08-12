@@ -20,8 +20,14 @@ module.exports = function(passport){
         failureRedirect: '/auth/failure'
     }));
 
-    //sign up
+    //sign up donor
     router.post('/signup', passport.authenticate('signup', {
+        successRedirect: '/auth/success',
+        failureRedirect: '/auth/failure'
+    }));
+    
+      //sign up orphanage
+    router.post('/orphanageSignup', passport.authenticate('orphanageSignup', {
         successRedirect: '/auth/success',
         failureRedirect: '/auth/failure'
     }));

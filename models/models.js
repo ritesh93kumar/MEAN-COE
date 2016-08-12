@@ -15,7 +15,8 @@ var orphanageSchema = new mongoose.Schema({
 	email: String,
     contact_no: Number,
     authenticated: {type:Boolean, default:false},
-    no_of_people: Number
+    no_of_people: Number,
+    government_id:Number
     
 });
 

@@ -2,7 +2,7 @@ var Schema = require('./models/models');
 var mongoose = require('mongoose');
 var Donor = mongoose.model('Donors');
 //var User = require('./models/models');
-   
+var Orphanage =mongoose.model('Orphanages');   
 var User = mongoose.model('Login');
 var LocalStrategy   = require('passport-local').Strategy;
 var bCrypt = require('bcrypt-nodejs');
@@ -107,6 +107,74 @@ module.exports = function(passport){
                  
                     console.log("Donor details added ");
                 });
+            }
+            
+        });
+            
+            /*if (users[username]){
+                console.log('User already exists with username: ' + username);
+                return done(null, false);
+            }
+
+            users[username] = {
+                username: username,
+                password: createHash(password)
+            }
+
+            console.log(users[username].username + ' Registration successful');
+            return done(null, users[username]);*/
+        })
+    );
+
+    
+    passport.use('orphanageSignup', new LocalStrategy({
+            passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+        function(req, username, password, done) {
+           
+       User.findOne({'username':username}, 
+                     function(err, user){
+            
+            if(err){
+                
+                return done('Error in singup', err);
+            }
+            if(user){
+                console.log('user already exists');
+                return done('user already exisis', false);
+            }
+            else{
+                var newUser = new User();
+                var orphanage = new Orphanage(); 
+                newUser.username = username;
+                newUser.password = createHash(password);
+                newUser.role="ORPHANAGE";
+                orphanage.name = req.body.name;
+                orphanage.address.country="India";
+                orphanage.address.state="Goa";
+                orphanage.address.city="Margao";
+                orphanage.address.zip_code=590006;
+                orphanage.email=username;
+                orphanage.contact_no=req.body.contact;
+                orphanage.no_of_people=req.body.orphansNo;
+                orphanage.government_id=req.body.govtId;
+                orphanage.save(function(err){
+                    if(err){
+                        console.log('error in saving Orphanage Details' + err);
+                        throw err;
+                    }
+                 
+                    console.log("Orphanage details added ");
+                });
+                newUser.save(function(err){
+                    if(err){
+                        console.log('error in saving user' + err);
+                        throw err;
+                    }
+                    console.log(newUser.username + 'registration successful');
+                  return done(null, newUser);
+                });
+                
             }
             
         });

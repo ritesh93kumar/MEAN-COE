@@ -38,7 +38,7 @@ router.route('/orphanages')
         orphange.contact_no=req.body.contact_no;
         orphange.authenticated=req.body.authenticated;
         orphange.no_of_people=req.body.no_of_people;
-    
+        orphange.government_id=req.body.government_id;
         orphange.save(function(err,result){
            if(err){
                return res.send(500, err);
@@ -76,7 +76,7 @@ router.route('/orphanages/:id')
                 result.contact_no=req.body.contact_no;
                 result.authenticated=req.body.authenticated;
                 result.no_of_people=req.body.no_of_people;
-                
+                result.government_id=req.body.government_id;               
                 result.save(function(err,result){
                    if(err)
                        return res.send(500, err);
