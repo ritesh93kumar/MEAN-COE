@@ -128,7 +128,7 @@
     
     
 	  <!-- Sign Up Modal -->
-    <form ng-controller="signUpController" ng-submit="signup()">
+    <form ng-controller="signUpController" ng-submit="donorSignup()">
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 
@@ -140,34 +140,35 @@
 				<div class="modal-body">
 
 					<label><b>Username</b></label>
-					<input type="text" ng-model="signupInfo.username" placeholder="Enter Username"  required>
+					<input type="text" ng-model="donorSignupInfo.username" placeholder="Enter Username"  required>
 
 					<label><b>Email</b></label>
-					<input type="email" ng-model="signupInfo.email" placeholder="Enter email" name="email" required>
+					<input type="email" ng-model="donorSignupInfo.email" placeholder="Enter email" name="email" required>
 
-					<label><b>Phone NO</b></label>
-					<input type="text"  ng-model="signupInfo.pNo" placeholder="Enter Contact Number"  name="pNo" maxlength="10">
+					<label><b>Contact NO</b></label>
+					<input type="text"  ng-model="donorSignupInfo.contact" placeholder="Enter Contact Number"  name="pNo" minlength="10" maxlength="10" >
 
 					<label><b>Password </b></label>
-					<input type="password" ng-model="signupInfo.password" placeholder="Enter Password" name="password" required>
+					<input type="password" ng-model="donorSignupInfo.password" placeholder="Enter Password" name="password" required>
 
 					<label><b>Confirm Password </b></label>
-					<input type="password" ng-model="signupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+					<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
+                    <span ng-hide="isSameDonor()">Passwords should match</span>
 
 					<label><b>Address :</b></label>
 
 					Select the Country :<br>
-					<select ng-model="signupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
+					<select ng-model="donorSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
 					</select>
 					<br />
 					State in the above country :<br>
-					<select ng-model="signupInfo.selectState" name ="state" id ="state"></select>
+					<select ng-model="donorSignupInfo.selectState" name ="state" id ="state"></select>
 					<script language="javascript">print_country("country");</script>
 
 					<br>
 
 
-					<button type="submit" class="btn btn-rounded loginbtn">SignUp</button>
+					<button type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButtonDonor" >SignUp</button>
 					<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>
 				</div>
 			</div>
@@ -196,13 +197,13 @@
 					<input type="email" ng-model="orphanageSignupInfo.username" placeholder="Enter email" name="orphanageEmail" required>
 
 					<label><b>Contact Number</b></label>
-					<input type="text"  ng-model="orphanageSignupInfo.contact" placeholder="Enter Contact Number"  name="orphanageContact" maxlength="10">
+					<input type="text"  ng-model="orphanageSignupInfo.contact" placeholder="Enter Contact Number"  name="orphanageContact" minlength="10" maxlength="10" required>
                     
                     <label><b>Government Registration number</b></label>
                     <input type="text" ng-model="orphanageSignupInfo.govtId" placeholder="Enter Government Registration number" name="orphanageGovtId" required>
                     
                     <label><b>Number of orphans</b></label>
-					<input type="number"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo">
+					<input type="number"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo" required>
 
 					
 
@@ -223,7 +224,7 @@
 
 					<label><b>Confirm Password </b></label>
 					<input type="password" ng-model="orphanageSignupInfo.confirmPassword" placeholder="Re-enter Password" name="OrphanConfirmPassword" required>
-                    <span ng-hide="isSame()">Passwords should match</span>
+                    <span ng-hide="isSameOrphanage()">Passwords should match</span>
                     <br/>
                     
                     
@@ -234,7 +235,7 @@
                     <br/>
 
 
-					<button id="signUp" type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButton">SignUp {{showButton}}</button>
+					<button id="signUp" type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButtonOrphanage">SignUp</button>
 					<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>
 				</div>
 			</div>

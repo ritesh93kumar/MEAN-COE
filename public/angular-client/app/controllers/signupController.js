@@ -4,16 +4,31 @@ myApp.controller('signUpController', function($scope,$http){
     
      
 
-    $scope.isSame = function(){
+    $scope.isSameOrphanage = function(){
         
         if($scope.orphanageSignupInfo.password != $scope.orphanageSignupInfo.confirmPassword)
-        {    $scope.showButton=true;
+        {    $scope.showButtonOrphanage=true;
            
             return false;
         }
         else
         {
-            $scope.showButton=false;
+            $scope.showButtonOrphanage=false;
+            
+            return true;
+        }
+    }
+    
+    $scope.isSameDonor = function(){
+        
+        if($scope.donorSignupInfo.password != $scope.donorSignupInfo.confirmPassword)
+        {    $scope.showButtonDonor=true;
+           
+            return false;
+        }
+        else
+        {
+            $scope.showButtonDonor=false;
             
             return true;
         }
@@ -21,9 +36,9 @@ myApp.controller('signUpController', function($scope,$http){
     
     
 
-    $scope.signup = function() {
+    $scope.donorSignup = function() {
         
-        $http.post("/auth/signup",$scope.signupInfo).success(function(response){
+        $http.post("/auth/donorSignup",$scope.donorSignupInfo).success(function(response){
 		 
 		});
       };
