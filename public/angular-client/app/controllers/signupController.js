@@ -1,9 +1,7 @@
 var myApp=angular.module('EasyDonations');
 
-myApp.controller('signUpController', function($scope,$http){
+myApp.controller('signUpController', function($scope,$cookies,$window,$http){
     
-     
-
     $scope.isSameOrphanage = function(){
         
         if($scope.orphanageSignupInfo.password != $scope.orphanageSignupInfo.confirmPassword)
@@ -37,17 +35,24 @@ myApp.controller('signUpController', function($scope,$http){
     
 
     $scope.donorSignup = function() {
-        
-        $http.post("/auth/donorSignup",$scope.donorSignupInfo).success(function(response){
-		 
-		});
-      };
+        if($scope.donorSignupInfo.password!=$scope.donorSignupInfo.confirmPassword)
+            alert("Re-enter Password! Both password did not match");
+        else
+        {
+            $http.post("/auth/donorSignup",$scope.donorSignupInfo).success(function(response){
+                console.log("inside post signup "+response);
+	            $cookies.put("user", response.user.username);
+                console.log("Signed status of" + $scope.sessionUser + " : " + $scope.isUserLoggedIn);
+                console.log( $scope.isSignedup);
+                $window.location.href = '/';
+            });
+        }
+    };
     
      $scope.orphanageSignup = function() {
-        
-        
-        $http.post("/auth/orphanageSignup",$scope.orphanageSignupInfo).success(function(response){
-		 
-		});
-      };
+         $http.post("/auth/orphanageSignup",$scope.orphanageSignupInfo)
+             .success(function(response){});
+     };
+     
 });
+    
