@@ -21,7 +21,7 @@ module.exports = function(passport){
     }));
 
     //sign up donor
-    router.post('/signup', passport.authenticate('signup', {
+    router.post('/donorSignup', passport.authenticate('donorSignup', {
         successRedirect: '/auth/success',
         failureRedirect: '/auth/failure'
     }));

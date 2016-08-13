@@ -63,7 +63,7 @@ module.exports = function(passport){
         }
     ));
 
-    passport.use('signup', new LocalStrategy({
+    passport.use('donorSignup', new LocalStrategy({
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
@@ -90,7 +90,7 @@ module.exports = function(passport){
                 donor.address.city="Margao";
                 donor.address.zip_code=590006;
                 donor.email=req.body.email;
-                donor.contact_no=req.body.pNo;
+                donor.contact_no=req.body.contact;
                 newUser.save(function(err){
                     if(err){
                         console.log('error in saving user' + err);
