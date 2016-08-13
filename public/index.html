@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,7 +23,8 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-	<link href="stylesheets/login.css" rel="stylesheet">	
+	<link href="stylesheets/login.css" rel="stylesheet">
+	<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
     <script src="angular-client/app/controllers/loginController.js"></script>
     <script src="angular-client/app/controllers/signupController.js"></script>
     
@@ -64,13 +66,13 @@
                         <a class="page-scroll" href="#services">Statistics</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Our Legacy</a>
+                        <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#postItemModal">Donate Item</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <!--<a class="page-scroll" href="#about">About</a>-->
                     </li>
                     <li>
-                        <a class="page-scroll" href="#team">Team</a>
+                        <!--<a class="page-scroll" href="#team">Team</a>-->
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -90,39 +92,40 @@
     <!-- Login -->
 	<form ng-submit="login()" ng-controller="loginController">      
       <!-- Modal -->
-      <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
+		  <div class="modal fade" id="myModal1" role="dialog">
+			<div class="modal-dialog">
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-            </div>
-            <div class="modal-body">
+				</div>
+				<div class="modal-body">
 
-                <label><b>Username</b></label>
-                <input type="text" ng-model="loginInfo.username" placeholder="Enter Username" id="username" name="username" required>
+					<label><b>Username</b></label>
+					<input type="text" ng-model="loginInfo.username" placeholder="Enter Username" id="username" name="username" required>
 
-                <label><b>Password</b></label>
-            <input type="password" ng-model="loginInfo.password" placeholder="Enter Password" name="password" id="password" required>
-                <input type="checkbox" checked="checked"> Remember me</input><br>
-                <div style="background-color:#f1f1f1">
-                    <span class="psw"> <a href="#"> Forgot password?</a></span>
-                </div>	
+					<label><b>Password</b></label>
+				<input type="password" ng-model="loginInfo.password" placeholder="Enter Password" name="password" id="password" required>
+					<input type="checkbox" checked="checked"> Remember me</input><br>
+					<div style="background-color:#f1f1f1">
+						<span class="psw"> <a href="#"> Forgot password?</a></span>
+					</div>	
 
-                    <button class="loginbtn"  type="submit" >Login</button> <!-- redirect to home page -->
-                    <button id="close" data-dismiss="modal">Close</button>
+						<button class="loginbtn"  type="submit" >Login</button> <!-- redirect to home page -->
+						<button id="close" data-dismiss="modal">Close</button>
 
-            </div>
-            <div class="modal-footer">
-                New user? SignUp 
-            </div>  
-          </div>
+				</div>
+				<div class="modal-footer">
+					New user? SignUp 
+				</div>  
+			  </div>
 
-        </div>
-      </div>
-</form><!--login controller ends-->
+			</div>
+		  </div>
+	</form>
+	<!--login controller ends-->
     
     
     
@@ -179,78 +182,138 @@
 
 <!--Orphanage Sign Up Modal -->
     <form ng-controller="signUpController" ng-submit="orphanageSignup()">
-	<div class="modal fade" id="myModal2" role="dialog">
-		<div class="modal-dialog">
+		<div class="modal fade" id="myModal2" role="dialog">
+			<div class="modal-dialog">
 
-		  <!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-				  <button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
+			  <!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
 
-					<label><b>Orphanage name</b></label>
-					<input type="text" ng-model="orphanageSignupInfo.name" placeholder="Enter Orphanage Name" name="orphanageName" required>
+						<label><b>Orphanage name</b></label>
+						<input type="text" ng-model="orphanageSignupInfo.name" placeholder="Enter Orphanage Name" name="orphanageName" required>
 
-					<label><b>Email</b></label>
-					<input type="email" ng-model="orphanageSignupInfo.username" placeholder="Enter email" name="orphanageEmail" required>
+						<label><b>Email</b></label>
+						<input type="email" ng-model="orphanageSignupInfo.username" placeholder="Enter email" name="orphanageEmail" required>
 
-					<label><b>Contact Number</b></label>
-					<input type="text"  ng-model="orphanageSignupInfo.contact" placeholder="Enter Contact Number"  name="orphanageContact" maxlength="10">
-                    
-                    <label><b>Government Registration number</b></label>
-                    <input type="text" ng-model="orphanageSignupInfo.govtId" placeholder="Enter Government Registration number" name="orphanageGovtId" required>
-                    
-                    <label><b>Number of orphans</b></label>
-					<input type="number"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo">
+						<label><b>Contact Number</b></label>
+						<input type="text"  ng-model="orphanageSignupInfo.contact" placeholder="Enter Contact Number"  name="orphanageContact" maxlength="10">
 
-					
+						<label><b>Government Registration number</b></label>
+						<input type="text" ng-model="orphanageSignupInfo.govtId" placeholder="Enter Government Registration number" name="orphanageGovtId" required>
 
-					<label><b>Address :</b></label>
-
-					Select the Country :<br>
-					<select ng-model="orphanageSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
-					</select>
-					<br />
-					State in the above country :<br>
-					<select ng-model="orphanageSignupInfo.selectState" name ="state" id ="state"></select>
-					<script language="javascript">print_country("country");</script>
-
-					<br>
-                    
-                    <label><b>Password</b></label>
-					<input type="password" ng-model="orphanageSignupInfo.password" placeholder="Enter Password" name="orphanPassword" required>
-
-					<label><b>Confirm Password </b></label>
-					<input type="password" ng-model="orphanageSignupInfo.confirmPassword" placeholder="Re-enter Password" name="OrphanConfirmPassword" required>
-                    <span ng-hide="isSame()">Passwords should match</span>
-                    <br/>
-                    
-                    
-                    <div class="checkbox" >
-                                <label>
-                                    <input type="checkbox" required >I agree that our organization is a government certified organization</label>
-                    </div>
-                    <br/>
+						<label><b>Number of orphans</b></label>
+						<input type="number"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo">
 
 
-					<button id="signUp" type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButton">SignUp {{showButton}}</button>
-					<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>
+
+						<label><b>Address :</b></label>
+
+						Select the Country :<br>
+						<select ng-model="orphanageSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
+						</select>
+						<br />
+						State in the above country :<br>
+						<select ng-model="orphanageSignupInfo.selectState" name ="state" id ="state"></select>
+						<script language="javascript">print_country("country");</script>
+
+						<br>
+
+						<label><b>Password</b></label>
+						<input type="password" ng-model="orphanageSignupInfo.password" placeholder="Enter Password" name="orphanPassword" required>
+
+						<label><b>Confirm Password </b></label>
+						<input type="password" ng-model="orphanageSignupInfo.confirmPassword" placeholder="Re-enter Password" name="OrphanConfirmPassword" required>
+						<span ng-hide="isSame()">Passwords should match</span>
+						<br/>
+
+
+						<div class="checkbox" >
+									<label>
+										<input type="checkbox" required >I agree that our organization is a government certified organization</label>
+						</div>
+						<br/>
+
+
+						<button id="signUp" type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButton">SignUp {{showButton}}</button>
+						<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
     </form><!-- SIGNUP ENDS HERE   -->
 	
+	<!-- Post Item Modal -->
+	<form ng-submit="" ng-controller="">      
+      <!-- Modal -->
+		  <div class="modal fade" id="postItemModal" role="dialog">
+			<div class="modal-dialog">
+
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+					<label class="text-center h3"><b>Donate Items</b></label>
+				  	<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body clearfix">
+
+					<label><b>Item Name</b></label>
+					<input type="text" ng-model="" placeholder="Item Name" required>
+
+					<label><b>Quantity</b></label><br>
+					<input type="text" ng-model="" placeholder="How Many?" required>
+					
+					<br><br>
+					
+					<button class="btn btn-lg btn-success outline" ng-click=""> + Add Another</button> <!--Add this item to Items Array-->
+					
+					<br><br><br>
+					
+					<label><b>How long are you in Town?</b></label><br>
+					<input type="text" ng-model="" placeholder="Post Validity" required>
+					
+					<label><b>Enter Contact Number</b></label><br>
+					<input type="text" ng-model="" placeholder="Where do we contact you?" required>
+					
+					<br><br>
+					
+					<button class="btn btn-lg btn-warning outline pull-right"  type="submit" >Submit</button>
+					<!--<button class="btn btn-lg btn-primary outline pull-right" id="close" data-dismiss="modal">Close</button>-->
+
+				</div>
+				<div class="modal-footer text-center">
+					<span class="text-center">Your items will end up in </span>
+				</div>  
+			  </div>
+
+			</div>
+		  </div>
+	</form>
+	<!--Post Item Modal ends-->
+
     <!-- Header -->
     <header>
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">Welcome To Our Studio!</div>
                 <div class="intro-heading">It's Nice To Meet You</div>
-                <a class="page-scroll btn btn-xl" href="#myModal" data-toggle="modal" data-target="#myModal">signup</a>
-                <a href="#myModal" class="page-scroll btn btn-xl"  data-toggle="modal" data-target="#myModal2">Register Orphanage</a>
+                <div class="col-md-6 col-md-offset-3 clearfix">
+					<a href="#myModal" data-toggle="modal" data-target="#myModal">
+						<button class="btn btn-lg btn-warning outline pull-left">
+							Donate Today
+						</button>
+					</a>
+
+					<a href="#myModal" data-toggle="modal" data-target="#myModal2">
+						<button class="btn btn-lg btn-danger outline pull-right" style="background">
+							Register Orphanage
+						</button>
+					</a>
+				</div>
             </div>
+			<br><br><br><br><br><br><br><br><br>
         </div>
     </header>
 
@@ -259,40 +322,42 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Services</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">Statistics</h2>
+                    <h3 class="section-subheading text-muted">We make a living by What we Get, But We make a Life by What we Give.</h3>
                 </div>
             </div>
             <div class="row text-center">
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-heart-o fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="service-heading">Donations Made</h4>
+                    <p class="h1">1,628</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-home fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="service-heading">Orphanages Covered</h4>
+                    <p class="h1">1,628</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-users fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Web Security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="service-heading">No of Donors</h4>
+                    <p class="h1">1,628</p>
                 </div>
             </div>
         </div>
+		<br><br><br><br><br><br><br>
     </section>
 
     <!-- Portfolio Grid Section -->
+<!--
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -389,9 +454,10 @@
             </div>
         </div>
     </section>
+-->
 
     <!-- About Section -->
-    <section id="about">
+<!--<section id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -469,10 +535,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Team Section -->
-    <section id="team" class="bg-light-gray">
+    <!--<section id="team" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -533,10 +599,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Clients Aside -->
-    <aside class="clients">
+    <!--<aside class="clients">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
@@ -561,7 +627,7 @@
                 </div>
             </div>
         </div>
-    </aside>
+    </aside>-->
 
     <!-- Contact Section -->
     <section id="contact">
