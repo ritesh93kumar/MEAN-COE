@@ -1,5 +1,4 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,17 +20,20 @@
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<link href="stylesheets/login.css" rel="stylesheet">
 	<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <script src="angular-client/app/controllers/loginController.js"></script>
-    <script src="angular-client/app/controllers/signupController.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-cookies.js"></script>
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="client/application.js"></script>
+    <script src="client/config/routes.js"></script>
+    <script src="client/controller/mainController.js"></script>
+    <script src="client/controller/authController.js"></script>
     
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+		
     <!-- Theme CSS -->
 	<!--  This should be changed to Minified Version while in production	-->
     <link href="css/agency.css" rel="stylesheet">
@@ -45,10 +47,10 @@
 
 </head>
 
-<body id="page-top" class="index" ng-app="EasyDonations">
+<body id="page-top" class="index" ng-app="easyDonations" ng-controller="mainController">
     
     <!-- Navigation -->
-    <nav id="mainNav" ng-controller="loginController as loginC" class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
@@ -80,8 +82,8 @@
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
 					<li>
-                        <a class="page-scroll" href="#myModal" data-toggle="modal"  data-target="#myModal1" ng-show="!isUserLoggedIn">Login</a>
-                        <a class="page-scroll" href="" ng-show="isUserLoggedIn" ng-click="logout()">Logout</a>
+                        <a class="page-scroll" href="#/login" data-toggle="modal"  data-target="#myModal1" ng-hide="authenticated">Login</a>
+                        <a class="page-scroll"ng-show="authenticated" href="#" ng-click="signout()">Logout</a>
                         
                     </li>
                     
@@ -93,164 +95,23 @@
     </nav>
      
     <!-- Login -->
-	<form ng-controller="loginController as loginC" ng-submit="login()">      
-      <!-- Modal -->
-		  <div class="modal fade" id="myModal1" role="dialog">
-			<div class="modal-dialog">
-
-			  <!-- Modal content-->
-			  <div class="modal-content">
-				<div class="modal-header">
-				  <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-				</div>
-				<div class="modal-body">
-
-					<label><b>Username</b></label>
-					<input type="text" ng-model="loginInfo.username" placeholder="Enter Username" id="username" name="username" required>
-
-					<label><b>Password</b></label>
-				<input type="password" ng-model="loginInfo.password" placeholder="Enter Password" name="password" id="password" required>
-					<input type="checkbox" checked="checked"> Remember me</input><br>
-					<div style="background-color:#f1f1f1">
-						<span class="psw"> <a href="#"> Forgot password?</a></span>
-					</div>	
-
-						<button class="loginbtn"  type="submit" >Login</button> <!-- redirect to home page -->
-						<button id="close" data-dismiss="modal">Close</button>
-
-				</div>
-				<div class="modal-footer">
-					New user? SignUp 
-				</div>  
-			  </div>
-			</div>
-		  </div>
-	</form>
+	<div ng-view></div>
 	<!--login controller ends-->
 
 	<!-- Sign Up Modal -->
-    <form ng-controller="signUpController as signupC
-" ng-submit="donorSignup()">
-
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-
-		  <!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-				  <button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-
-					<label><b>Username</b></label>
-					<input type="text" ng-model="donorSignupInfo.username" placeholder="Enter Username"  required>
-
-					<label><b>Email</b></label>
-					<input type="email" ng-model="donorSignupInfo.email" placeholder="Enter email" name="email" required>
-
-					<label><b>Contact NO</b></label>
-					<input type="text"  ng-model="donorSignupInfo.contact" placeholder="Enter Contact Number"  name="pNo" minlength="10" maxlength="10" >
-
-					<label><b>Password </b></label>
-					<input type="password" ng-model="donorSignupInfo.password" placeholder="Enter Password" name="password" required>
-
-					<label><b>Confirm Password </b></label>
-					<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
-                    <span ng-hide="isSameDonor()">Passwords should match</span>
-
-					<label><b>Address :</b></label>
-
-					Select the Country :<br>
-					<select ng-model="donorSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
-					</select>
-					<br />
-					State in the above country :<br>
-					<select ng-model="donorSignupInfo.selectState" name ="state" id ="state"></select>
-					<script language="javascript">print_country("country");</script>
-
-					<br>
-
-
-					<button type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButtonDonor" >SignUp</button>
-					<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>
-				</div>
-			</div>
-		</div>
-	</div>
-    </form><!-- SIGNUP ENDS HERE   -->
-</div>
+    <div ng-view></div>
+   <!-- SIGNUP ENDS HERE   -->
+    <!--</div>-->
     
 
 <!--Orphanage Sign Up Modal -->
-    <form ng-controller="signUpController" ng-submit="orphanageSignup()">
-		<div class="modal fade" id="myModal2" role="dialog">
-			<div class="modal-dialog">
-
-			  <!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-					  <button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-
-						<label><b>Orphanage name</b></label>
-						<input type="text" ng-model="orphanageSignupInfo.name" placeholder="Enter Orphanage Name" name="orphanageName" required>
-
-						<label><b>Email</b></label>
-						<input type="email" ng-model="orphanageSignupInfo.username" placeholder="Enter email" name="orphanageEmail" required>
-
-					<label><b>Contact Number</b></label>
-					<input type="text"  ng-model="orphanageSignupInfo.contact" placeholder="Enter Contact Number"  name="orphanageContact" minlength="10" maxlength="10" required>
-                    
-                    <label><b>Government Registration number</b></label>
-                    <input type="text" ng-model="orphanageSignupInfo.govtId" placeholder="Enter Government Registration number" name="orphanageGovtId" required>
-                    
-                    <label><b>Number of orphans</b></label>
-					<input type="number"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo" required>
-
-						<label><b>Address :</b></label>
-						
-						Select the Country :<br>
-						<select ng-model="orphanageSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
-						</select>
-						<br />
-						State in the above country :<br>
-						<select ng-model="orphanageSignupInfo.selectState" name ="state" id ="state"></select>
-						<script language="javascript">print_country("country");</script>
-						
-						
-						
-						<br>
-
-						<label><b>Password</b></label>
-						<input type="password" ng-model="orphanageSignupInfo.password" placeholder="Enter Password" name="orphanPassword" required>
-						
-
-					<label><b>Confirm Password </b></label>
-					<input type="password" ng-model="orphanageSignupInfo.confirmPassword" placeholder="Re-enter Password" name="OrphanConfirmPassword" required>
-                    <span ng-hide="isSameOrphanage()">Passwords should match</span>
-                    <br/>
-                    
-                    
-                    <div class="checkbox" >
-                                <label>
-                                    <input type="checkbox" required >I agree that our organization is a government certified organization</label>
-                    </div>
-                    <br/>
-
-
-					<button id="signUp" type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButtonOrphanage">SignUp</button>
-					<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right">Close</button>
-				</div>
-			</div>
-		</div>
-		</div>
-    </form><!-- SIGNUP ENDS HERE   -->
+    <div ng-view></div>
+    <!-- SIGNUP ENDS HERE   -->
+    
 <!--</div>-->
 	
 	<!-- Post Item Modal -->
-	<form ng-submit="" ng-controller="">      
+	<form >      
       <!-- Modal -->
 		  <div class="modal fade" id="postItemModal" role="dialog">
 			<div class="modal-dialog">
@@ -304,13 +165,13 @@
                 <div class="intro-lead-in">Welcome To Our Studio!</div>
                 <div class="intro-heading">It's Nice To Meet You</div>
                 <div class="col-md-6 col-md-offset-3 clearfix">
-					<a href="#myModal" data-toggle="modal" data-target="#myModal">
-						<button class="btn btn-lg btn-warning outline pull-left">
+					<a href="#/donorsignup" data-toggle="modal" data-target="#myModal">
+						<button class="btn btn-lg btn-warning outline pull-left" >
 							Donate Today
 						</button>
 					</a>
 
-					<a href="#myModal" data-toggle="modal" data-target="#myModal2">
+					<a href="#/orphanagesignup" data-toggle="modal" data-target="#myModal2">
 						<button class="btn btn-lg btn-danger outline pull-right" style="background">
 							Register Orphanage
 						</button>
