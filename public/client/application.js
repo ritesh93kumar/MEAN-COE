@@ -1,4 +1,4 @@
-var easyDonations=angular.module('easyDonations',['ngRoute','ngResource']).run(function($rootScope,$http) {
+var easyDonations=angular.module('easyDonations',['ngRoute','ngResource','ui.bootstrap']).run(function($rootScope,$http) {
 	$rootScope.authenticated = false;
 	$rootScope.current_user = '';
 	

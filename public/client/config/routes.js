@@ -9,17 +9,17 @@ easyDonations.config(function($routeProvider){
 		})*/
 		//the login display
 		.when('/login', {
-			templateUrl: 'login.html',
+			templateUrl: 'views/login.html',
 			controller: 'authController'
 		})
 		//the donor signup display
 		.when('/donorsignup', {
-			templateUrl: 'donor_signup.html',
+			templateUrl: 'views/donor_signup.html',
 			controller: 'authController'
 		})
 		//the orphanage signupdisplay
 		.when('/orphanagesignup', {
-			templateUrl: 'orphanage_signup.html',
+			templateUrl: 'views/orphanage_signup.html',
 			controller: 'authController'
 		})
        

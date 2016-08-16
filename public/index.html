@@ -82,7 +82,7 @@
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
 					<li>
-                        <a class="page-scroll" href="#/login" data-toggle="modal"  data-target="#myModal1" ng-hide="authenticated">Login</a>
+                        <a class="page-scroll" href="" data-toggle="modal"  data-target="#myModal1" ng-hide="authenticated" ng-click="loadLoginModal()">Login</a>
                         <a class="page-scroll"ng-show="authenticated" href="#" ng-click="signout()">Logout</a>
                         
                     </li>
@@ -93,71 +93,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-     
-    <!-- Login -->
-	<div ng-view></div>
-	<!--login controller ends-->
-
-	<!-- Sign Up Modal -->
-    <div ng-view></div>
-   <!-- SIGNUP ENDS HERE   -->
-    <!--</div>-->
     
-
-<!--Orphanage Sign Up Modal -->
-    <div ng-view></div>
-    <!-- SIGNUP ENDS HERE   -->
-    
-<!--</div>-->
-	
-	<!-- Post Item Modal -->
-	<form >      
-      <!-- Modal -->
-		  <div class="modal fade" id="postItemModal" role="dialog">
-			<div class="modal-dialog">
-
-			  <!-- Modal content-->
-			  <div class="modal-content">
-				<div class="modal-header">
-					<label class="text-center h3"><b>Donate Items</b></label>
-				  	<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body clearfix">
-
-					<label><b>Item Name</b></label>
-					<input type="text" ng-model="" placeholder="Item Name" required>
-
-					<label><b>Quantity</b></label><br>
-					<input type="text" ng-model="" placeholder="How Many?" required>
-					
-					<br><br>
-					
-					<button class="btn btn-lg btn-success outline" ng-click=""> + Add Another</button> <!--Add this item to Items Array-->
-					
-					<br><br><br>
-					
-					<label><b>How long are you in Town?</b></label><br>
-					<input type="text" ng-model="" placeholder="Post Validity" required>
-					
-					<label><b>Enter Contact Number</b></label><br>
-					<input type="text" ng-model="" placeholder="Where do we contact you?" required>
-					
-					<br><br>
-					
-					<button class="btn btn-lg btn-warning outline pull-right"  type="submit" >Submit</button>
-					<!--<button class="btn btn-lg btn-primary outline pull-right" id="close" data-dismiss="modal">Close</button>-->
-
-				</div>
-				<div class="modal-footer text-center">
-					<span class="text-center">Your items will end up in </span>
-				</div>  
-			  </div>
-
-			</div>
-		  </div>
-	</form>
-	<!--Post Item Modal ends-->
-
     <!-- Header -->
     <header>
         <div class="container">
@@ -165,13 +101,13 @@
                 <div class="intro-lead-in">Welcome To Our Studio!</div>
                 <div class="intro-heading">It's Nice To Meet You</div>
                 <div class="col-md-6 col-md-offset-3 clearfix">
-					<a href="#/donorsignup" data-toggle="modal" data-target="#myModal">
+					<a href="" data-toggle="modal" data-target="#myModal" ng-click="loadDonorSignUpModal()">
 						<button class="btn btn-lg btn-warning outline pull-left" >
 							Donate Today
 						</button>
 					</a>
 
-					<a href="#/orphanagesignup" data-toggle="modal" data-target="#myModal2">
+					<a href="" data-toggle="modal" data-target="#myModal2" ng-click="loadOrphanageSignUpModal()">
 						<button class="btn btn-lg btn-danger outline pull-right" style="background">
 							Register Orphanage
 						</button>
@@ -764,6 +700,9 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
+	
+	    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+
 
 </body>
 
