@@ -1,8 +1,0 @@
-{
-    "jscodehints.detectedExclusions": [
-        "D:/mean-coe/routes/orphange_api.js",
-        "D:/mean-coe/passport-init.js",
-        "D:/mean-coe/app.js",
-        "D:/mean-coe/public/vendor/bootstrap/js/bootstrap.min.js"
-    ]
-}
