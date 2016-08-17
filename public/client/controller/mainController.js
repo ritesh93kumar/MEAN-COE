@@ -24,4 +24,12 @@ easyDonations.controller('mainController',['$scope','$modal',function($scope,$mo
               scope: $scope
           });
 	 };
+     /*$scope.viewDonationModal = function () {
+         console.log("inside view donation modal func");
+          $modal.open({
+              templateUrl: 'views/donationpage.html',
+              controller: 'donationController',
+              scope: $scope
+          });
+	 };*/
 }]);

@@ -22,5 +22,9 @@ easyDonations.config(function($routeProvider){
 			templateUrl: 'views/orphanage_signup.html',
 			controller: 'authController'
 		})
+        .when('/viewdonation',{
+            templateUrl : 'views/donationpage.html',
+            controller : 'donationControl'
+        })
        
 });

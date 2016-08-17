@@ -23,7 +23,7 @@ router.route('/donations')
             if(err){
                 return res.send(500, err);
             }
-            return res.send(Donations);
+            return res.json(Donations);
         });
        
     })
