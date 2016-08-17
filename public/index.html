@@ -30,10 +30,12 @@
     <script src="client/controller/authController.js"></script>
     
    
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
-		
+    
+<!--    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <!-- Theme CSS -->
 	<!--  This should be changed to Minified Version while in production	-->
     <link href="css/agency.css" rel="stylesheet">
@@ -83,6 +85,8 @@
                     </li>
 					<li>
                         <a class="page-scroll" href="" data-toggle="modal"  data-target="#myModal1" ng-hide="authenticated" ng-click="loadLoginModal()">Login</a>
+                    </li>
+					<li>
                         <a class="page-scroll"ng-show="authenticated" href="#" ng-click="signout()">Logout</a>
                         
                     </li>
