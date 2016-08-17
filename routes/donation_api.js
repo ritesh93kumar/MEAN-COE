@@ -1,6 +1,7 @@
 var Donation = require('../models/models');
 var mongoose = require('mongoose');
 var Donation = mongoose.model('Donations');
+var Orphanage = mongoose.model('Orphanages');
 var express = require('express');
 var router = express.Router();
 
@@ -85,7 +86,8 @@ router.route('/statistics')
     var statistics;
         Donation.count({},function(err,donationsMade){
             Donation.find().distinct('donated_by', function(error, donors) {
-                Donation.find().distinct('donated_to', function(error, orphanages) {
+                
+            Orphanage.find().distinct('_id', function(error, orphanages) {
                     /*var temp={"donationsMade":donationsMade,"donors":donors.length,"orphanages":orphanages.length};
                     statistics=JSON.stringify(temp);
                     console.log("Statistics  : "+statistics);*/
