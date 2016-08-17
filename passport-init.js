@@ -84,12 +84,14 @@ module.exports = function(passport){
                 var donor = new Donor(); 
                 newUser.username = username;
                 newUser.password = createHash(password);
-                donor.name = username;
+                newUser.role="DONOR";
+                donor.name = req.body.name;
+                
                 donor.address.country="India";
                 donor.address.state="Goa";
                 donor.address.city="Margao";
                 donor.address.zip_code=590006;
-                donor.email=req.body.email;
+                donor.email=username;
                 donor.contact_no=req.body.contact;
                 newUser.save(function(err){
                     if(err){

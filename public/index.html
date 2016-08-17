@@ -30,10 +30,12 @@
     <script src="client/controller/authController.js"></script>
      <script src="../client/controller/donationControl.js"></script>
    
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
-		
+    
+<!--    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <!-- Theme CSS -->
 	<!--  This should be changed to Minified Version while in production	-->
     <link href="css/agency.css" rel="stylesheet">
@@ -71,7 +73,7 @@
                         <a class="page-scroll" href="#services">Statistics</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#myModal" data-toggle="modal" data-target="#postItemModal">Donate Item</a>
+                        <a class="page-scroll" href="#myModal" >Donate Item</a>
                     </li>
                     <li>
                         <!--<a class="page-scroll" href="#about">About</a>-->
@@ -84,7 +86,9 @@
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
 					<li>
-                        <a class="page-scroll" href="" data-toggle="modal"  data-target="#myModal1" ng-hide="authenticated" ng-click="loadLoginModal()">Login</a>
+                        <a class="page-scroll" href=""  ng-hide="authenticated" ng-click="loadLoginModal()">Login</a>
+                    </li>
+					<li>
                         <a class="page-scroll"ng-show="authenticated" href="#" ng-click="signout()">Logout</a>
                         
                     </li>
@@ -103,13 +107,13 @@
                 <div class="intro-lead-in">Welcome To Our Studio!</div>
                 <div class="intro-heading">It's Nice To Meet You</div>
                 <div class="col-md-6 col-md-offset-3 clearfix">
-					<a href="" data-toggle="modal" data-target="#myModal" ng-click="loadDonorSignUpModal()">
+					<a href="" ng-click="loadDonorSignUpModal()">
 						<button class="btn btn-lg btn-warning outline pull-left" >
 							Donate Today
 						</button>
 					</a>   
 
-					<a href="" data-toggle="modal" data-target="#myModal2" ng-click="loadOrphanageSignUpModal()">
+					<a href="" ng-click="loadOrphanageSignUpModal()">
 						<button class="btn btn-lg btn-danger outline pull-right" style="background">
 							Register Orphanage
 						</button>
@@ -136,7 +140,7 @@
                         <i class="fa fa-heart-o fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Donations Made</h4>
-                    <p class="h1">1,628</p>
+                    <p class="h1">{{statistics.donationsMade}}</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -144,7 +148,7 @@
                         <i class="fa fa-home fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">Orphanages Covered</h4>
-                    <p class="h1">1,628</p>
+                    <p class="h1">{{statistics.orphanages}}</p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -152,7 +156,7 @@
                         <i class="fa fa-users fa-stack-1x fa-inverse"></i>
                     </span>
                     <h4 class="service-heading">No of Donors</h4>
-                    <p class="h1">1,628</p>
+                    <p class="h1">{{statistics.donors}}</p>
                 </div>
             </div>
         </div>
