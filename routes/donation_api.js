@@ -74,7 +74,28 @@ router.route('/donations/:id')
             });
         });
   
-    })
+    });
+
+    //---Statistics--
+
+router.route('/statistics')
+
+    .get(function(req,res){
+        
+    var statistics;
+        Donation.count({},function(err,donationsMade){
+            Donation.find().distinct('donated_by', function(error, donors) {
+                Donation.find().distinct('donated_to', function(error, orphanages) {
+                    /*var temp={"donationsMade":donationsMade,"donors":donors.length,"orphanages":orphanages.length};
+                    statistics=JSON.stringify(temp);
+                    console.log("Statistics  : "+statistics);*/
+                     res.json({"donationsMade":donationsMade,"donors":donors.length,"orphanages":orphanages.length});
+    
+                });
+            });
+       });
+      
+    });
     
 
 module.exports = router;
