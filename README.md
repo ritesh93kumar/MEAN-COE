@@ -1,22 +1,11 @@
 ##Steps to Install and Run
 
-npm install express-generator -g
+  - cd /
 
-express --ejs .
+  - git clone https://github.com/ritesh93kumar/MEAN-COE.git
 
-npm install
+  - cd /MEAN-COE
 
-# install express session middleware
-npm install express-session --save
+  - npm start
 
-# install passport
-npm install passport --save
-
-# install passport-local strategy for handling authentication
-npm install passport-local --save
-
-# install bcrypt-nodejs for handling creating password hashes
-npm install bcrypt-nodejs --save
-
-# to start the server: go to app directory and type
-  npm start
+  - Browse the app at **localhost:3000** in your Favorite Browser
