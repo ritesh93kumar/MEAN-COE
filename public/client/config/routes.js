@@ -3,10 +3,10 @@ var easyDonations=angular.module('easyDonations');
 easyDonations.config(function($routeProvider){
 	$routeProvider
     
-        .when('/', {
-			templateUrl: 'index.html',
-			//controller: 'mainController'
-		})
+//        .when('/', {
+//			templateUrl: 'index.html',
+//			controller: 'mainController'
+//		})
 		//the login display
 		.when('/login', {
 			templateUrl: 'views/login.html',
