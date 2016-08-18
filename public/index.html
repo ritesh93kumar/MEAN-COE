@@ -26,9 +26,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="client/application.js"></script>
     <script src="client/config/routes.js"></script>
-    <script src="client/factory/statisticsFactory.js"></script>
     <script src="client/controller/mainController.js"></script>
     <script src="client/controller/authController.js"></script>
+    <script src="client/controller/donationController.js"></script>
+	<script src="client/factory/statisticsFactory.js"></script>
+    <script src="client/factory/donationFactory.js"></script>
     
    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
@@ -80,6 +82,7 @@
                     </li>
                     <li>
                         <!--<a class="page-scroll" href="#team">Team</a>-->
+                        <a class="page-scroll" ng-href="#/viewdonation">View Donations</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -160,6 +163,10 @@
             </div>
         </div>
 		<br><br><br><br><br><br><br>
+    </section>
+    
+    <section id="/viewdonation">
+        <div ng-view></div>
     </section>
 
     <!-- Portfolio Grid Section -->
