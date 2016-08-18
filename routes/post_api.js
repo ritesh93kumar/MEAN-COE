@@ -33,8 +33,9 @@ router.route('/posts')
     //create new post
     .post(function(req, res){
         var newPost = new Post();
+		console.log("Request Obj : ");
+		console.log(req.body);
         newPost.posted_by = req.body.posted_by;
-        newPost.claims = req.body.claims;
         newPost.items = req.body.items;
         newPost.expiry_date = req.body.expiry_date;
         newPost.activated = true;
@@ -81,8 +82,8 @@ router.route('/posts/:id')
                     res.send(500, err);
                 }
                 res.json(post);                
-            });                
-        });    
+            });
+        });
         //return res.send({message: 'create post' + req.params.id});
     })
     //delete post

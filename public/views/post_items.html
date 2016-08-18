@@ -1,38 +1,31 @@
-<form >      
- 
-		  <div class="modal-content">
-			<div class="modal-header">
-				<label class="text-center h3"><b>Donate Items</b></label>
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-			</div>
-			<div class="modal-body clearfix">
+<div class="row" style="background:grey">
+	<section id="donation" class="col-md-6 col-md-offset-3">
+		<div>
+			<label class="text-center h3"><b>Donate Items</b></label>
+		</div>
+		<div class="clearfix">
+			<form method="post" ng-submit="insertPosts()">
+				
+				<input type="text" ng-model="posted_by" name="posted_by" ng-hide="true" disabled>
+				
+				<input type="text" name="current_user_name" ng-model="current_user_name" disabled>
+				
+				<input type="text" ng-model="item.item" placeholder="Item Name" required>{{item.name}}
 
-				<label><b>Item Name</b></label>
-				<input type="text" ng-model="" placeholder="Item Name" required>
-
-				<label><b>Quantity</b></label><br>
-				<input type="text" ng-model="" placeholder="How Many?" required>
+				<input type="text" ng-model="item.quantity" placeholder="How Many?" required>{{item.quantity}}
 
 				<br><br>
-
-				<button class="btn btn-lg btn-success outline" ng-click=""> + Add Another</button> <!--Add this item to Items Array-->
-
+				<!--Add Item Function inserts the object to the Items Array-->
+				<button class="btn btn-lg btn-success outline" ng-click="addItem()"> + Add Another</button>
 				<br><br><br>
 
-				<label><b>How long are you in Town?</b></label><br>
-				<input type="text" ng-model="" placeholder="Post Validity" required>
-
-				<label><b>Enter Contact Number</b></label><br>
-				<input type="text" ng-model="" placeholder="Where do we contact you?" required>
+				<label><b>How long are you in Town?</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="date" name="expiry_date" ng-model="expiry_date" placeholder="Enter Date">
 
 				<br><br>
 
-				<button class="btn btn-lg btn-warning outline pull-right" type="submit">Submit</button>
-				<!--<button class="btn btn-lg btn-primary outline pull-right" id="close" data-dismiss="modal">Close</button>-->
-
-			</div>
-			<div class="modal-footer">
-			</div>  
-		  </div>
-
-</form>
+				<button class="btn btn-lg btn-warning outline" type="submit">Submit</button>
+			</form>
+		</div> 
+</section>
+</div>

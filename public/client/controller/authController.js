@@ -15,7 +15,7 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
                 
                 $scope.user.authenticated = true;
                 $scope.user.current_user = data.user.username;
-
+				$scope.user._id = data.user._id;
                 $sessionStorage.user = $scope.user;
 
                 console.log($sessionStorage.user);

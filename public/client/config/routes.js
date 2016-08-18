@@ -24,7 +24,11 @@ easyDonations.config(function($routeProvider){
 		})
         .when('/viewdonation',{
             templateUrl : 'views/donationpage.html',
-            controller : 'donationControl'
+            controller : 'donationController'
         })
+		.when('/donate', {
+			templateUrl : 'views/post_items.html',
+			controller : 'donationController'
+		})
        
 });

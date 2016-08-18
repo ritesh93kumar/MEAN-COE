@@ -75,14 +75,14 @@
                         <a class="page-scroll" href="#services">Statistics</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#myModal" >Donate Item</a>
+                        <a class="page-scroll" ng-show="authenticated" ng-href="#donate">Donate Item</a>
                     </li>
                     <li>
                         <!--<a class="page-scroll" href="#about">About</a>-->
                     </li>
                     <li>
                         <!--<a class="page-scroll" href="#team">Team</a>-->
-                        <a class="page-scroll" ng-href="#/viewdonation">View Donations</a>
+                        <a class="page-scroll" ng-href="#viewdonation">View Donations</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -91,7 +91,7 @@
                         <a class="page-scroll" href=""  ng-hide="authenticated" ng-click="loadLoginModal()">Login</a>
                     </li>
 					<li>
-                        <a class="page-scroll"ng-show="authenticated" href="#" ng-click="signout()">Logout</a>
+                        <a class="page-scroll" ng-show="authenticated" href="#" ng-click="signout()">Logout</a>
                         
                     </li>
                     
@@ -122,7 +122,7 @@
 					</a>
 				</div>
             </div>
-			<br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br>
         </div>
     </header>
 
@@ -162,13 +162,13 @@
                 </div>
             </div>
         </div>
-		<br><br><br><br><br><br><br>
+		<!--<br><br><br><br><br><br><br>-->
     </section>
-    
-    <section id="/viewdonation">
-        <div ng-view></div>
-    </section>
-
+    	
+	<section>
+		<div ng-view></div>
+	</section>
+	
     <!-- Portfolio Grid Section -->
 <!--
     <section id="portfolio" class="bg-light-gray">
