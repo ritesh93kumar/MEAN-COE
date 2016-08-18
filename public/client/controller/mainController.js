@@ -1,5 +1,5 @@
 var easyDonations=angular.module('easyDonations');
-easyDonations.controller('mainController',['$scope','$modal','$http',function($scope,$modal,$http){
+easyDonations.controller('mainController',['$scope','$modal','$http','statisticsFactory',function($scope,$modal,$http,statisticsFactory){
     
     console.log("Inside mainController");
     $scope.statistics;
@@ -27,6 +27,15 @@ easyDonations.controller('mainController',['$scope','$modal','$http',function($s
         });
     };
     
+    $scope.getStatistics=function(){
+        
+        statisticsFactory.getStatistics().then(function(response){
+          $scope.statistics = response.data;
+        },function(error){
+            console.log('Error: ' + response);
+        });
+    }
+   /* 
     $http.get('/api/statistics')
         .success(function(data) {
             $scope.statistics = data;
@@ -34,6 +43,6 @@ easyDonations.controller('mainController',['$scope','$modal','$http',function($s
         })
         .error(function(data) {
             console.log('Error: ' + data);
-        });
+        });*/
    
 }]);
