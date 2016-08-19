@@ -45,14 +45,14 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	$scope.addItem = function(){
 		// Create a item object and populate it
 		var item = {};
-		item.name = $scope.item.name;
+		item.item = $scope.item.item;
 		item.quantity = $scope.item.quantity;
 		
 		//Push item into Items Array
 		$scope.items.push(item);
 		
 		// Reset the Fields
-		$scope.item.name = "";
+		$scope.item.item = "";
 		$scope.item.quantity = "";
 		console.log("Added Items : ");
 		console.log($scope.items);
