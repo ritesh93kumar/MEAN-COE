@@ -39,7 +39,7 @@
 
 			<label><b>Confirm Password </b></label>
 			<input type="password" ng-model="orphanageSignupInfo.confirmPassword" placeholder="Re-enter Password" name="OrphanConfirmPassword" required>
-			<span ng-hide="isSameOrphanage()">Passwords should match</span>
+			<span ng-hide="isSame(orphanageSignupInfo.password,orphanageSignupInfo.confirmPassword)">Passwords should match</span>
 			<br/>
 
 

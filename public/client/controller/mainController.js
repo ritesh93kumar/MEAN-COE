@@ -14,7 +14,7 @@ easyDonations.controller('mainController',['$scope','$modal','$http','statistics
     $scope.loadDonorSignUpModal = function () {
         $modal.open({
             templateUrl: 'views/donor_signup.html',
-            controller: 'authController',
+            controller: 'signupController',
             scope: $scope
         });
     };
@@ -22,7 +22,7 @@ easyDonations.controller('mainController',['$scope','$modal','$http','statistics
     $scope.loadOrphanageSignUpModal = function () {
         $modal.open({
             templateUrl: 'views/orphanage_signup.html',
-            controller: 'authController',
+            controller: 'signupController',
             scope: $scope
         });
     };

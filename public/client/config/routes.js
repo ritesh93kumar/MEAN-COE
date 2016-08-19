@@ -15,12 +15,12 @@ easyDonations.config(function($routeProvider){
 		//the donor signup display
 		.when('/donorsignup', {
 			templateUrl: 'views/donor_signup.html',
-			controller: 'authController'
+			controller: 'signupController'
 		})
 		//the orphanage signupdisplay
 		.when('/orphanagesignup', {
 			templateUrl: 'views/orphanage_signup.html',
-			controller: 'authController'
+			controller: 'signupController'
 		})
         .when('/viewdonation',{
             templateUrl : 'views/donationpage.html',

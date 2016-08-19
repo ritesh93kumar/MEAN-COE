@@ -20,7 +20,7 @@
 
 				<label><b>Confirm Password </b></label>
 				<input type="password" ng-model="donorSignupInfo.confirmPassword" placeholder="Re-enter Password" name="confirmPassword" required>
-				<span ng-hide="isSameDonor()">Passwords should match</span>
+				<span ng-hide="isSame(donorSignupInfo.password,donorSignupInfo.confirmPassword)">Passwords should match</span>
 
 				<label><b>Address :</b></label>
 				Select the Country :<br>
