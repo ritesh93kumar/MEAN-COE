@@ -31,8 +31,14 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
       };
     
     
-    $scope.isSameOrphanage = function(){        
-        if($scope.orphanageSignupInfo.password != $scope.orphanageSignupInfo.confirmPassword){    
+    $scope.isSameOrphanage = function(){  
+        
+    /*    if(typeof(orphanageSignupInfo)=="undefined")
+        {
+            return true;
+        }
+        
+        else*/ if($scope.orphanageSignupInfo.password != $scope.orphanageSignupInfo.confirmPassword){    
             $scope.showButtonOrphanage=true;           
             return false;
         }
@@ -42,8 +48,12 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
         }
     };
     
-    $scope.isSameDonor = function(){        
-        if($scope.donorSignupInfo.password != $scope.donorSignupInfo.confirmPassword){    
+    $scope.isSameDonor = function(){ 
+       /*   if(typeof(donorSignupInfo)=="undefined")
+        {
+            return true;
+        }
+        else*/ if($scope.donorSignupInfo.password != $scope.donorSignupInfo.confirmPassword){    
             $scope.showButtonDonor=true;           
             return false;
         }
@@ -53,7 +63,7 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
         }
     };
     
-    $scope.register = function(){
+    $scope.registerDonor = function(){
         console.log("inside register");
         
         $http.post('/auth/donorSignup', $scope.donorSignupInfo).success(function(data){
@@ -71,6 +81,9 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
                 $scope.error_message = data.message;
             }
         });
+    };
+    
+    $scope.registerOrphanage=function(){
         
         $http.post("/auth/orphanageSignup",$scope.orphanageSignupInfo).success(function(data){
             if(data.state == 'success'){
