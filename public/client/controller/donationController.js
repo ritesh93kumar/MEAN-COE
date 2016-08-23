@@ -5,8 +5,11 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	console.log("inside view donations controller");
     
 	$scope.items = [];
-	$scope.posted_by = $sessionStorage.user._id;
-	$scope.current_user_name = $sessionStorage.user.current_user;
+	if($sessionStorage.user){
+		// Only if Session is Set
+		$scope.posted_by = $sessionStorage.user._id;
+		$scope.current_user_name = $sessionStorage.user.current_user;
+	}
     
     function getPosts() {
         donationFactory.getPosts()
