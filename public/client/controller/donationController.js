@@ -41,7 +41,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     };
    
      $scope.getAllDetails=function(){
-         $scope.postDetails={};
+         $scope.postDetails=[];
         console.log("Inside GetAll");
         for(i in $scope.posts)
         {
@@ -54,6 +54,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
                     {
                         console.log($scope.donors[j].name);
                         console.log($scope.posts[i].items);
+                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items});
                         console.log("postDetails");
                         
                     }
