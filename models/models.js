@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var donorSchema = new mongoose.Schema({
+    _id:String,
 	name: String,
 	address: {city: String, state: String, zip_code: Number, country:String},
 	email: String,
@@ -10,6 +11,7 @@ var donorSchema = new mongoose.Schema({
 });
 
 var orphanageSchema = new mongoose.Schema({
+    _id:String,
 	name: String,
 	address: { city: String, state: String, zip_code: Number, country:String},
 	email: String,
@@ -38,6 +40,7 @@ var postSchema = new mongoose.Schema({
 });
 
 var loginSchema = new mongoose.Schema({
+    _id:String,
 	username: String,
 	password: String, //hash created from password
     role: String,

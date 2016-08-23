@@ -85,6 +85,9 @@ module.exports = function(passport){
                 newUser.username = username;
                 newUser.password = createHash(password);
                 newUser.role="DONOR";
+                newUser._id=username;
+                
+                donor._id=username;
                 donor.name = req.body.name;
                 
                 donor.address.country="India";

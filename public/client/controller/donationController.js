@@ -12,7 +12,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	}
     
     function getDonor(){
-        donationFactory.getDonors($scope.current_user_name).then(function(response){
+        donationFactory.getDonors($sessionStorage.user._id).then(function(response){
             $scope.donor=response.data;
             console.log("Donor object");
             console.log($scope.donor);

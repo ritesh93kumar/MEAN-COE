@@ -50,7 +50,7 @@ router.route('/donors')
 router.route('/donors/:id')
     //get donor
     .get(function(req, res){
-        Donor.findOne({"email":req.params.id}, function(err, donor){
+        Donor.findById(req.params.id, function(err, donor){
             if(err){
                 res.send(500, err);
             }
@@ -60,7 +60,7 @@ router.route('/donors/:id')
     })
     //create donor
     .put(function(req, res){
-        Donor.find({"email":req.params.id}, function(err, donor){
+        Donor.findById(req.params.id, function(err, donor){
             if(err){
                 res.send(500, err);
             }
@@ -80,7 +80,7 @@ router.route('/donors/:id')
     })
     //delete donor
     .delete(function(req, res){
-        Donor.remove({"email":req.params.id}, function(err){
+        Donor.remove(req.params.id, function(err){
             if(err){
                     res.send(500, err);
             }

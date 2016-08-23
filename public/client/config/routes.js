@@ -8,7 +8,7 @@ easyDonations.config(function($routeProvider){
 //			controller: 'mainController'
 //		})
 		//the login display
-		.when('/login', {
+		/*.when('/login', {
 			templateUrl: 'views/login.html',
 			controller: 'authController'
 		})
@@ -16,7 +16,7 @@ easyDonations.config(function($routeProvider){
 		.when('/donorsignup', {
 			templateUrl: 'views/donor_signup.html',
 			controller: 'signupController'
-		})
+		})*/
 		//the orphanage signupdisplay
 		.when('/orphanagesignup', {
 			templateUrl: 'views/orphanage_signup.html',

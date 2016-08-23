@@ -12,6 +12,7 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
      $scope.login = function(){
         $http.post('/auth/login', $scope.loginInfo).success(function(data){
             if(data.state == 'success'){
+                console.log("from auth"+data);
                 
                 $scope.user.authenticated = true;
                 $scope.user.current_user = data.user.username;
