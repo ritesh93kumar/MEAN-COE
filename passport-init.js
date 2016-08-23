@@ -154,6 +154,10 @@ module.exports = function(passport){
                 newUser.username = username;
                 newUser.password = createHash(password);
                 newUser.role="ORPHANAGE";
+                
+                                
+                orphanage._id=username;//added email as _ID
+                newUser._id=username;//added email as _ID
                 orphanage.name = req.body.name;
                 orphanage.address.country="India";
                 orphanage.address.state="Goa";

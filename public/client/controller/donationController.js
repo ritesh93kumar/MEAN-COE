@@ -1,6 +1,6 @@
 var easyDonations=angular.module('easyDonations');
 
-easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory', function($scope, $http, $sessionStorage, donationFactory){
+easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout', function($scope, $http, $sessionStorage, donationFactory,$timeout){
     
 	console.log("inside view donations controller");
     
@@ -15,10 +15,9 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         donationFactory.getDonors($sessionStorage.user._id).then(function(response){
             $scope.donor=response.data;
             console.log("Donor object");
-            console.log($scope.donor);
-                                                                                 
-                                                                             },function(error){
-                                                                            console.log("Couldnot get donor data");});
+            console.log(response);
+          },function(error){
+            console.log("Couldnot get donor data");});
     };
     
     
@@ -26,14 +25,36 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         donationFactory.getPosts()
         .then(function (response){
             $scope.posts = response.data;
+            console.log("POST OBJECT");
             console.log(response);
         }, function (error) {
             console.log("Could not get data");
         });
     };
-    getDonor();
-    getPosts();
-    
+   
+     $scope.getAllDetails=function(){
+         $scope.postDetails={};
+        console.log($scope.posts);
+        for(i in $scope.posts)
+        {
+            for(j in $scope.donors)
+            {
+                   console.log($scope.posts[i]._id);
+                   console.log($scope.posts[i].items);
+                
+                    if($scope.posts[i].posted_by == $scope.donors[j]._id)
+                    {
+                        
+                        console.log("postDetails");
+                        
+                    }
+            }
+        }
+        
+    };
+        getDonor();
+        getPosts();
+        $timeout($scope.getAllDetails, 1000);
     
 
 	$scope.insertPosts = function(){

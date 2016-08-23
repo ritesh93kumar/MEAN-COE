@@ -39,7 +39,7 @@ router.route('/posts')
         newPost.items = req.body.items;
         newPost.expiry_date = req.body.expiry_date;
         newPost.activated = true;
-
+        console.log(newPost);
         newPost.save(function(err, newPost){
             if(err){
                     return res.send(500, err);            
