@@ -1,57 +1,58 @@
-<form ng-submit="registerOrphanage()">
 	<!-- Modal content-->
-	<div class="modal-content">
-		<div class="modal-header">
-		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()">&times;</button>
+		<h4>Orphanage Sign Up form</h4>
+	</div>
+	<div class="modal-body clearfix">
+		<form ng-submit="registerOrphanage()">
+
+		<label><b>Orphanage name</b></label>
+		<input type="text" ng-model="orphanageSignupInfo.name" placeholder="Enter Orphanage Name" name="orphanageName" required>
+
+		<label><b>Email</b></label>
+		<input type="email" ng-model="orphanageSignupInfo.username" placeholder="Enter email" name="orphanageEmail" required>
+
+		<label><b>Contact Number</b></label>
+		<input type="text"  ng-model="orphanageSignupInfo.contact" placeholder="Enter Contact Number"  name="orphanageContact" minlength="10" maxlength="10" required>
+
+		<label><b>Government Registration number</b></label>
+		<input type="text" ng-model="orphanageSignupInfo.govtId" placeholder="Enter Government Registration number" name="orphanageGovtId" required>
+
+		<label><b>Number of orphans</b></label>
+		<input type="text"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo" minlength="10" maxlength="10" required>
+			<br><br>
+		<label><b>Address :</b></label>
+
+		Select the Country :<br>
+		<select ng-model="orphanageSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
+		</select>
+		<br />
+		State in the above country :<br>
+		<select ng-model="orphanageSignupInfo.selectState" name ="state" id ="state"></select>
+		<script language="javascript">print_country("country");</script>
+
+		<br>
+
+		<label><b>Password</b></label>
+		<input type="password" ng-model="orphanageSignupInfo.password" placeholder="Enter Password" name="orphanPassword" required>
+
+
+		<label><b>Confirm Password </b></label>
+		<input type="password" ng-model="orphanageSignupInfo.confirmPassword" placeholder="Re-enter Password" name="OrphanConfirmPassword" required>
+		<span ng-hide="isSame(orphanageSignupInfo.password,orphanageSignupInfo.confirmPassword)">Passwords should match</span>
+		<br/>
+
+
+		<div class="checkbox" >
+			<label>
+				<input type="checkbox" required >I agree that our organization is a government certified organization
+			</label>
 		</div>
-		<div class="modal-body">
+		<br/>
 
-			<label><b>Orphanage name</b></label>
-			<input type="text" ng-model="orphanageSignupInfo.name" placeholder="Enter Orphanage Name" name="orphanageName" required>
-
-			<label><b>Email</b></label>
-			<input type="email" ng-model="orphanageSignupInfo.username" placeholder="Enter email" name="orphanageEmail" required>
-
-			<label><b>Contact Number</b></label>
-			<input type="text"  ng-model="orphanageSignupInfo.contact" placeholder="Enter Contact Number"  name="orphanageContact" minlength="10" maxlength="10" required>
-
-			<label><b>Government Registration number</b></label>
-			<input type="text" ng-model="orphanageSignupInfo.govtId" placeholder="Enter Government Registration number" name="orphanageGovtId" required>
-
-			<label><b>Number of orphans</b></label>
-			<input type="number"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo" required>
-
-			<label><b>Address :</b></label>
-
-			Select the Country :<br>
-			<select ng-model="orphanageSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
-			</select>
-			<br />
-			State in the above country :<br>
-			<select ng-model="orphanageSignupInfo.selectState" name ="state" id ="state"></select>
-			<script language="javascript">print_country("country");</script>
-
-			<br>
-
-			<label><b>Password</b></label>
-			<input type="password" ng-model="orphanageSignupInfo.password" placeholder="Enter Password" name="orphanPassword" required>
-
-
-			<label><b>Confirm Password </b></label>
-			<input type="password" ng-model="orphanageSignupInfo.confirmPassword" placeholder="Re-enter Password" name="OrphanConfirmPassword" required>
-			<span ng-hide="isSame(orphanageSignupInfo.password,orphanageSignupInfo.confirmPassword)">Passwords should match</span>
-			<br/>
-
-
-			<div class="checkbox" >
-				<label>
-					<input type="checkbox" required >I agree that our organization is a government certified organization
-				</label>
-			</div>
-			<br/>
-
-			<button id="signUp" type="submit" class="btn btn-rounded loginbtn" ng-disabled="showButtonOrphanage">SignUp</button>
-			<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right" ng-click="$dismiss()">Close</button>
+		<button id="signUp" type="submit" class="btn btn-rounded loginbtn pull-right" ng-disabled="showButtonOrphanage">SignUp</button>
+<!--		<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right" ng-click="$dismiss()">Close</button>-->
+		</form>
 	</div>
-	</div>
-</form>
+</div>

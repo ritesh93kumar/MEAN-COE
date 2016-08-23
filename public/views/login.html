@@ -1,29 +1,18 @@
-<form ng-submit="login()">      
-     
-			  <div class="modal-content">
-				<div class="modal-header">
-				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+<div class="modal-content clearfix">
+	<div class="modal-header">
+		
+		<button type="button" class="close" data-dismiss="modal" ng-click="$dismiss()">&times;</button>
+	</div>
+	<div class="modal-body  clearfix">
+		<form ng-submit="login()">  
+			<label><b>UserName</b></label>
+			<input type="text" ng-model="loginInfo.username" placeholder="Enter email address" name="username" required>
 
-				</div>
-				<div class="modal-body">
+			<label><b>Password</b></label>
+			<input type="password" ng-model="loginInfo.password" placeholder="Enter Password" name="password" required>
 
-					<label><b>UserName</b></label>
-					<input type="text" ng-model="loginInfo.username" placeholder="Enter email address" id="username" name="username" required>
-
-					<label><b>Password</b></label>
-				<input type="password" ng-model="loginInfo.password" placeholder="Enter Password" name="password" id="password" required>
-					<input type="checkbox" checked="checked"> Remember me</input><br>
-					<div style="background-color:#f1f1f1">
-						<span class="psw"> <a href="#"> Forgot password?</a></span>
-					</div>	
-
-						<button class="loginbtn"  type="submit" ng-click="$close()">Login</button> <!-- redirect to home page -->
-						<button id="close" data-dismiss="modal" ng-click="$dismiss()">Close</button>
-
-				</div>
-				<div class="modal-footer">
-					New user? SignUp 
-				</div>  
-			  </div>
-
-	</form>
+			<button class="loginbtn pull-right"  type="submit" ng-click="$close()">Login</button> <!-- redirect to home page -->
+<!--			<button id="close" data-dismiss="modal" ng-click="$dismiss()">Close</button>-->
+		</form>
+	</div>
+</div>
