@@ -12,14 +12,22 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	}
     
     function getDonor(){
-        donationFactory.getDonors($sessionStorage.user._id).then(function(response){
+        donationFactory.getDonors().then(function(response){
+            $scope.donors=response.data;
+            console.log("Donors object");
+            console.log(response);
+          },function(error){
+            console.log("Couldnot get donors data");});
+    };
+    
+    function getDonorById(){
+        donationFactory.getDonorById($sessionStorage.user.current_user).then(function(response){
             $scope.donor=response.data;
             console.log("Donor object");
             console.log(response);
           },function(error){
             console.log("Couldnot get donor data");});
     };
-    
     
     function getPosts() {
         donationFactory.getPosts()
@@ -52,6 +60,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         }
         
     };
+        getDonorById();
         getDonor();
         getPosts();
         $timeout($scope.getAllDetails, 1000);

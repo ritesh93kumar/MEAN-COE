@@ -8,7 +8,7 @@ easyDonations.factory('donationFactory', ['$http', function($http){
         return $http.get('/api/posts');
     };
     
-    donationFactory.getDonorsById = function (id) {
+    donationFactory.getDonorById = function (id) {
         return $http.get('/api/donors/'+id);
     };
     donationFactory.getDonors = function () {
