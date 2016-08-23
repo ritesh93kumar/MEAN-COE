@@ -30,6 +30,7 @@ router.route('/donors')
     //create donor
     .post(function(req, res){
         var newDonor = new Donor();
+        
         newDonor.name = req.body.name;
         newDonor.address = req.body.address;
         newDonor.email = req.body.email;
@@ -49,7 +50,7 @@ router.route('/donors')
 router.route('/donors/:id')
     //get donor
     .get(function(req, res){
-        Donor.findById(req.params.id, function(err, donor){
+        Donor.findOne({"email":req.params.id}, function(err, donor){
             if(err){
                 res.send(500, err);
             }
@@ -59,10 +60,11 @@ router.route('/donors/:id')
     })
     //create donor
     .put(function(req, res){
-        Donor.findById(req.params.id, function(err, donor){
+        Donor.find({"email":req.params.id}, function(err, donor){
             if(err){
                 res.send(500, err);
             }
+            
             donor.address = req.body.address;
             donor.email = req.body.email;
             donor.contact_no = req.body.contact_no;
@@ -78,7 +80,7 @@ router.route('/donors/:id')
     })
     //delete donor
     .delete(function(req, res){
-        Donor.remove({_id:req.params.id}, function(err){
+        Donor.remove({"email":req.params.id}, function(err){
             if(err){
                     res.send(500, err);
             }
