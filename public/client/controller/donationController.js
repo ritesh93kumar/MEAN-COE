@@ -11,7 +11,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 		$scope.current_user_name = $sessionStorage.user.current_user;
 	}
     
-    function getDonor(){
+    function getDonors(){
         donationFactory.getDonors().then(function(response){
             $scope.donors=response.data;
             console.log("Donors object");
@@ -42,17 +42,18 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
    
      $scope.getAllDetails=function(){
          $scope.postDetails={};
-        console.log($scope.posts);
+        console.log("Inside GetAll");
         for(i in $scope.posts)
         {
             for(j in $scope.donors)
             {
-                   console.log($scope.posts[i]._id);
+                  /* console.log($scope.posts[i].posted_by);
                    console.log($scope.posts[i].items);
-                
-                    if($scope.posts[i].posted_by == $scope.donors[j]._id)
+                */
+                    if($scope.posts[i].posted_by ==$scope.donors[j]._id)
                     {
-                        
+                        console.log($scope.donors[j].name);
+                        console.log($scope.posts[i].items);
                         console.log("postDetails");
                         
                     }
@@ -61,7 +62,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         
     };
         getDonorById();
-        getDonor();
+        getDonors();
         getPosts();
         $timeout($scope.getAllDetails, 1000);
     

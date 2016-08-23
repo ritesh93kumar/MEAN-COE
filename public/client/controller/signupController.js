@@ -23,8 +23,9 @@ easyDonations.controller('signupController',['$scope','$http','$sessionStorage',
             if(data.state == 'success'){
                 $scope.user.authenticated = true;
                 $scope.user.current_user = data.user.username;
-
+                
                 $sessionStorage.user = $scope.user;
+                $scope.user._id = data.user._id;
                 console.log($sessionStorage.user);
                 $rootScope.authenticated = $sessionStorage.user.authenticated;
                 
