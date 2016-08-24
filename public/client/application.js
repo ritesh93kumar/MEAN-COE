@@ -9,6 +9,7 @@ var easyDonations=angular.module('easyDonations',['ngRoute','ngResource','ui.boo
     }else{
         $rootScope.authenticated = $sessionStorage.user.authenticated;
         $rootScope.user = $sessionStorage.user;
+         $rootScope.role=$sessionStorage.user.role;
     }
     //console.log($sessionStorage.user);
     
@@ -17,6 +18,8 @@ var easyDonations=angular.module('easyDonations',['ngRoute','ngResource','ui.boo
         $http.get('auth/signout');
     	$rootScope.user.authenticated = false;
     	$rootScope.user.current_user = '';
+        $rootScope.user.role = '';
+        $rootScope.user._id = '';
         $sessionStorage.user = $rootScope.user;        
         console.log($sessionStorage.user); 
         $rootScope.authenticated = $sessionStorage.user.authenticated;
