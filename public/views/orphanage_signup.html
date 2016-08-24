@@ -21,19 +21,8 @@
 
 		<label><b>Number of orphans</b></label>
 		<input type="text"  ng-model="orphanageSignupInfo.orphansNo" placeholder="Enter total number of Orphans"  name="orphansNo" required>
-			<br><br>
-		<label><b>Address :</b></label>
-
-		Select the Country :<br>
-		<select ng-model="orphanageSignupInfo.selectCountry" onchange="print_state('state',this.selectedIndex);" id="country" name ="country">
-		</select>
-		<br />
-		State in the above country :<br>
-		<select ng-model="orphanageSignupInfo.selectState" name ="state" id ="state"></select>
-		<script language="javascript">print_country("country");</script>
-
-		<br>
-
+		<br><br>
+		
 		<label><b>Password</b></label>
 		<input type="password" ng-model="orphanageSignupInfo.password" placeholder="Enter Password" name="orphanPassword" required>
 
@@ -51,7 +40,7 @@
 		</div>
 		<br/>
 
-		<button id="signUp" type="submit" class="btn btn-rounded loginbtn pull-right" ng-disabled="showButtonOrphanage">SignUp</button>
+		<button id="signUp" type="submit" class="btn btn-lg btn-success btn-rounded outline pull-right" ng-disabled="showButtonOrphanage" ng-click="$close()">SignUp</button>
 <!--		<button id="close" data-dismiss="modal" class="btn btn-rounded pull-right" ng-click="$dismiss()">Close</button>-->
 		</form>
 	</div>
