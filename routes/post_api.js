@@ -72,7 +72,11 @@ router.route('/posts/:id')
                 post.items.push(itemObj);
             }
             
-            post.claims.push(req.body.claims[0]);
+            for(var claim in req.body.claims){
+				// Make changes here just in case
+				// Pushing all the claims in the Claims array
+				post.claims.push(claim);
+			}
             post.updation_date = req.body.updation_date;
             post.expiry_date = req.body.expiry_date;
             post.activated = req.body.activated;
