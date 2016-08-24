@@ -61,9 +61,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
                 */
                     if($scope.posts[i].posted_by ==$scope.donors[j]._id)
                     {
-                        console.log($scope.donors[j].name);
-                        console.log($scope.posts[i].items);
-                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items});
+                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity});
                         console.log("postDetails");
                         
                     }
