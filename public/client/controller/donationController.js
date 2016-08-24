@@ -7,7 +7,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	$scope.items = [];
 	if($sessionStorage.user){
 		// Only if Session is Set
-		$scope.posted_by = $sessionStorage.user._id;
+		$scope.posted_by = $sessionStorage.user.current_user;
 		$scope.current_user_name = $sessionStorage.user.current_user;
 	}
     
@@ -27,6 +27,15 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
             console.log(response);
           },function(error){
             console.log("Couldnot get donor data");});
+    };
+    
+     function getPostsOfDonor(){
+        donationFactory.getPostsByDonorName($sessionStorage.user.current_user).then(function(response){
+            $scope.postsOfDonor=response.data;
+            console.log("DonorPosts object");
+            console.log(response);
+          },function(error){
+            console.log("Couldnot get donorPost data");});
     };
     
     function getPosts() {
@@ -63,9 +72,11 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         
     };
         getDonorById();
-        getDonors();
+ getPostsOfDonor();
+        //getPostsOfDonor();
+        /*getDonors();
         getPosts();
-        $timeout($scope.getAllDetails, 1000);
+        $timeout($scope.getAllDetails, 1000);*/
     
 
 	$scope.insertPosts = function(){

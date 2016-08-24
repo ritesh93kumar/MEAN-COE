@@ -19,10 +19,13 @@ easyDonations.factory('donationFactory', ['$http', function($http){
         return $http.post('/api/posts', data);
     };
 	
-	donationFactory.getPostsById = function (id) {
-        return $http.get('/api/posts' + id);
+	/*donationFactory.getPostsById = function (id) {
+        return $http.get('/api/posts/' + id);
     };
-	
+	*/
+    donationFactory.getPostsByDonorName=function (id){
+        return $http.get('/api/posts/postedBy/'+id);
+    };
 //	dataFactory.updatePosts = function () {
 		// To be implemented
 //        return $http.put('/api/posts');

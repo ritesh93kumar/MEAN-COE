@@ -97,4 +97,15 @@ router.route('/posts/:id')
         //return res.send({message: 'post deleted !!' + req.params.id});
     });
 
+    router.route('/posts/postedBy/:id')
+    //get post by id
+    .get(function(req, res){
+        Post.find({"posted_by":req.params.id}, function(err, post){
+            if(err){
+                    res.send(500, err);
+                }
+                res.json(post);
+        });    
+        //return res.send({message: 'get post' + req.params.id});
+    });
 module.exports = router;

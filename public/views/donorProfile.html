@@ -1,26 +1,49 @@
-<div class="row" style="background:grey">
+<style>
+h1 {
+color:#ff99ff; 
+}
+    h4{
+        color:bisque;
+    }
+    h6{
+        color: #00b300
+    }
+    
+</style>
+<div class="row" style="background:#220033">
 	<section id="donorProfile" class="container">
 		<div class="text-center">
             <h2 class="section-heading">Profile Page</h2>
         </div>
-		<div class="col-lg-6">
-			<div class=" text-center">
+		<div class=" well well col-lg-2" style="background: #290066">
+			<div class="">
                 <h4>User Name:</h4> <h6>{{current_user_name}}</h6>
             </div>
             <br/>
-            <div class=" text-center">
+            <div class="">
                 <h4>Name:</h4>
-                <span class=" text-center">
+                
                     <h6>{{donor.name}}</h6>
-                </span>
+        
             </div>
             <br/>
-            <div class=" text-center">
+            <div class="">
                 <h4>Contact Number:</h4>
-                <span class=" text-center">
+                
                     <h6>{{donor.contact_no}}</h6>
-                </span>
+                
             </div>
         </div> 
+        <div class=""  style="background:#009900">
+            Your Posts:
+            <div ng-repeat="post in postsOfDonor">
+                <div style="background:aqua">
+                    {{post.items[0].item}}
+                </div>
+                
+            
+            </div>
+            
+        </div>
     </section>
 </div>
