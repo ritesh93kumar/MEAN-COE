@@ -1,9 +1,9 @@
 var easyDonations=angular.module('easyDonations');
 
-easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout', function($scope, $http, $sessionStorage, donationFactory,$timeout){
+easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout','$rootScope', function($scope, $http, $sessionStorage, donationFactory,$timeout,$rootScope){
     
 	console.log("inside view donations controller");
-    
+     $scope.hidePostButton=true;
 	$scope.items = [];
 	if($sessionStorage.user){
 		// Only if Session is Set
@@ -33,6 +33,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         donationFactory.getPostsByDonorName($sessionStorage.user.current_user).then(function(response){
             $scope.postsOfDonor=response.data;
             console.log("DonorPosts object");
+             $rootScope.numberOfPosts=Object.keys($scope.postsOfDonor).length;
             console.log(response);
           },function(error){
             console.log("Couldnot get donorPost data");});
@@ -76,6 +77,47 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         $timeout($scope.getAllDetails, 1000);
     
 
+    $scope.viewPosts=function(){		
+        $scope.hidePostButton=false;		
+        console.log($rootScope.numberOfPosts);		
+        if($rootScope.numberOfPosts>0)		
+        {		
+            $scope.showPosts=true;		
+            $scope.showPostError=false;		
+            		
+           $scope.viewPostButton=true;		
+            		
+        }		
+        else		
+        {		
+            $scope.showPosts=false;		
+            $scope.showPostError=true;		
+           $scope.viewPostButton=true;		
+            		
+        }		
+        		
+        		
+    		
+    };		
+    		
+    $scope.hidePosts=function(){		
+    $scope.showPosts=false;		
+    $scope.showPostError=false;		
+     $scope.viewPostButton=false;		
+         $scope.hidePostButton=true;		
+    };		
+    		
+    $scope.deletePost=function(id){		
+        donationFactory.deletePostById(id).then(function(response){		
+            $scope.deletedPost=response.data;		
+            //$http.successRedirect('/donorProfile');		
+            		
+        },function(error){		
+            console.log("Couldnot delete post");})		
+            		
+    };
+    
+    
 	$scope.insertPosts = function(){
 		// Insert the item to the Items Array
 		$scope.items.push($scope.item);

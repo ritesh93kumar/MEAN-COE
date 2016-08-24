@@ -23,6 +23,11 @@ easyDonations.factory('donationFactory', ['$http', function($http){
         return $http.get('/api/posts/' + id);
     };
 	*/
+    
+    donationFactory.deletePostById = function (id) {
+        return $http.delete('/api/posts/' + id);
+    };
+    
     donationFactory.getPostsByDonorName=function (id){
         return $http.get('/api/posts/postedBy/'+id);
     };

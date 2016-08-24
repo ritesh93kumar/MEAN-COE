@@ -1,49 +1,71 @@
 <style>
-h1 {
-color:#ff99ff; 
+    #displayitem
+{
+     background-color: white;
+    width: 300px;
+    height: 300px;    
+    border: 5px solid black;
+    padding: 25px;
+    margin: 15px;
 }
-    h4{
-        color:bisque;
-    }
-    h6{
-        color: #00b300
-    }
+
     
 </style>
-<div class="row" style="background:#220033">
+
+<div class="row" style="background:black">
 	<section id="donorProfile" class="container">
 		<div class="text-center">
             <h2 class="section-heading">Profile Page</h2>
         </div>
-		<div class=" well well col-lg-2" style="background: #290066">
-			<div class="">
+        
+		<div class=" col-lg-offset-2 well well col-lg-8">
+			<div>
                 <h4>User Name:</h4> <h6>{{current_user_name}}</h6>
             </div>
             <br/>
-            <div class="">
+            <div>
                 <h4>Name:</h4>
                 
                     <h6>{{donor.name}}</h6>
         
             </div>
             <br/>
-            <div class="">
+            <div>
                 <h4>Contact Number:</h4>
                 
                     <h6>{{donor.contact_no}}</h6>
                 
             </div>
         </div> 
-        <div class=""  style="background:#009900">
-            Your Posts:
-            <div ng-repeat="post in postsOfDonor">
-                <div style="background:aqua">
-                    {{post.items[0].item}}
-                </div>
+        
+        <div class="well well col-lg-12">
+            <h3>Your Posts:</h3>
+        
                 
+                   <h6>You have {{numberOfPosts}} posts!</h6>
+                    <button type="button"  class="btn btn-info btn-sm" ng-click="viewPosts()" ng-disabled="viewPostButton">View Posts</button>
+                    <button type="button"  class="btn btn-info btn-sm" ng-click="hidePosts()" ng-disabled="hidePostButton">Hide Posts</button>
             
+            <br/>
+                
+                <div class="col-md-4 col-sm-4" ng-repeat="post in postsOfDonor" id="displayitem" ng-show="showPosts">
+                        
+                      <label> <h3>Post</h3></label>
+                    <br/>
+                        <strong> Posted On:</strong> {{post.creation_date | date: 'dd-MM-yyyy'}}<br/>
+                        <strong>Items:</strong>
+                        <div ng-repeat="item in post.items"> {{item.item}} - {{item.quantity}}</div>
+                        <strong>Expires On:</strong>{{post.expiry_date| date: 'dd-MM-yyyy'}}
+                    <br/><br/>
+                    <button type="button" class="btn btn-success btn-lg" ng-click=""> Claims</button>
+                    <button type="button" class="btn btn-info btn-sm" ng-click="deletePost(post._id)"> Delete</button>
+                    <button type="button" class="btn btn-info btn-sm" ng-click="updatePost()"> Update</button>
+                    </div>
+            
+            <div alert alert-warning ng-show="showPostError" style="background:#d9b3ff">
+                You have not posted Yet!
             </div>
-            
+         
         </div>
     </section>
 </div>
