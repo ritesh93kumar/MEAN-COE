@@ -34,4 +34,8 @@ easyDonations.config(function($routeProvider){
             templateUrl : 'views/donorProfile.html',
 			controller : 'donationController'
         })
+        .when('/claims',{
+                templateUrl : 'views/claims.html',
+                controller : 'claimsController'
+        })
 });

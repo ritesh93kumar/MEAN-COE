@@ -1,0 +1,15 @@
+<div>
+    <h3>Claims</h3>
+    
+    <input ng-model="postId" name="postId" placeholder="enter post id">
+    <button ng-click="getClaims()">click</button>
+   
+    <div ng-repeat="op in orphanageDetails">
+        <p>{{op.name}}</p>
+        <p>{{op.no_of_people}}</p>
+        <button ng-click=""> Accept</button>
+    </div>
+    
+    
+    
+</div>
