@@ -70,11 +70,10 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         
     };
         getDonorById();
- getPostsOfDonor();
-        //getPostsOfDonor();
-        /*getDonors();
+ 		getPostsOfDonor();
+        getDonors();
         getPosts();
-        $timeout($scope.getAllDetails, 1000);*/
+        $timeout($scope.getAllDetails, 1000);
     
 
 	$scope.insertPosts = function(){
