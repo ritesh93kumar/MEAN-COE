@@ -26,8 +26,10 @@ easyDonations.controller('signupController',['$scope','$http','$sessionStorage',
                 
                 $sessionStorage.user = $scope.user;
                 $scope.user._id = data.user._id;
+                $scope.user.role = data.user.role;
                 console.log($sessionStorage.user);
                 $rootScope.authenticated = $sessionStorage.user.authenticated;
+				$rootScope.role = $sessionStorage.user.role;
                 
                 $location.path('/');
             }
@@ -43,11 +45,11 @@ easyDonations.controller('signupController',['$scope','$http','$sessionStorage',
             if(data.state == 'success'){
                 $scope.user.authenticated = true;
                 $scope.user.current_user = data.user.username;
-
+				$scope.user.role = data.user.role;
                 $sessionStorage.user = $scope.user;
                 console.log($sessionStorage.user);  
                 $rootScope.authenticated = $sessionStorage.user.authenticated;
-
+				$rootScope.role = $sessionStorage.user.role;
                 $location.path('/');
             }
             else{
