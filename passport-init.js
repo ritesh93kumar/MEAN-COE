@@ -90,10 +90,11 @@ module.exports = function(passport){
                 donor._id=username;
                 donor.name = req.body.name;
                 
-                donor.address.country="India";
-                donor.address.state="Karnataka";
-                donor.address.city="Belgaum";
-                donor.address.zip_code=590006;
+                donor.address.country=req.body.country;
+                
+                donor.address.state=req.body.state;
+                donor.address.city=req.body.city;
+                donor.address.zip_code=req.body.zipcode;
                 donor.email=username;
                 donor.contact_no=req.body.contact;
                 newUser.save(function(err){
@@ -159,10 +160,10 @@ module.exports = function(passport){
                 orphanage._id=username;//added email as _ID
                 newUser._id=username;//added email as _ID
                 orphanage.name = req.body.name;
-                orphanage.address.country="India";
-                orphanage.address.state="Goa";
-                orphanage.address.city="Margao";
-                orphanage.address.zip_code=590006;
+                orphanage.address.country=req.body.country;
+                orphanage.address.state=req.body.state;
+                orphanage.address.city=req.body.city;
+                orphanage.address.zip_code=req.body.zipcode;
                 orphanage.email=username;
                 orphanage.contact_no=req.body.contact;
                 orphanage.no_of_people=req.body.orphansNo;

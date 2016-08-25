@@ -18,7 +18,7 @@ easyDonations.controller('signupController',['$scope','$http','$sessionStorage',
     
     $scope.registerDonor = function(){
         console.log("inside register");
-        
+        console.log($scope.donorSignupInfo);
         $http.post('/auth/donorSignup', $scope.donorSignupInfo).success(function(data){
             if(data.state == 'success'){
                 $scope.user.authenticated = true;
@@ -65,5 +65,6 @@ easyDonations.controller('signupController',['$scope','$http','$sessionStorage',
 
 
 
+   
 
 }]);

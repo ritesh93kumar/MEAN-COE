@@ -130,7 +130,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 			"items" : $scope.items
 		}
 		donationFactory.insertPosts(postData).then(function (response){
-                $location.path("/");
+                $location.path("/home");
                 alert("You brought smile on some one face, THANK YOU !");
 				console.log("Inserted Item : ");
 				console.log(response.data);
@@ -168,7 +168,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         }
         else{
             donationFactory.updatePosts(postId,claimsObj).then(function(response){
-                    $location.path("/");
+                    $location.path("/home");
                     alert("You claimed successfully!");
             }, function(error){
                 console.log("Claim unsuccessful !");
