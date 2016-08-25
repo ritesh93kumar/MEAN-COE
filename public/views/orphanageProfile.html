@@ -1,0 +1,55 @@
+<style>
+    #displayitem
+{
+     background-color: white;
+    width: 300px;
+    height: 300px;    
+    border: 5px solid black;
+    padding: 25px;
+    margin: 15px;
+}
+
+    
+</style>
+
+<div class="row" style="background:black">
+	<section id="donorProfile" class="container">
+		<div class="text-center">
+            <h2 class="section-heading">Profile Page</h2>
+        </div>
+        
+		<div class=" col-lg-offset-2 well well col-lg-8">
+			<div>
+                <h4>User Name:</h4> <h6>{{current_user_name}}</h6>
+            </div>
+            <br/>
+            <div>
+                <h4>Name:</h4>
+                
+                    <h6>{{orphanage.name}}</h6>
+        
+            </div>
+            <br/>
+            <div>
+                <h4>Contact Number:</h4>
+                
+                    <h6>{{orphanage.contact_no}}</h6>
+                
+            </div>
+            <br/>
+            <div>
+                <h4>Number Of orphans:</h4>
+                
+                    <h6>{{orphanage.no_of_people}}</h6>
+                
+            </div>
+            <br/>
+            <div>
+                <h4>Government Registration number:</h4>
+                
+                    <h6>{{orphanage.government_id}}</h6>
+                
+            </div>
+        </div>
+    </section>
+</div>

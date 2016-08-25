@@ -37,35 +37,37 @@
                 
             </div>
         </div> 
-        
-        <div class="well well col-lg-12">
-            <h3>Your Posts:</h3>
-        
-                
-                   <h6>You have {{numberOfPosts}} posts!</h6>
-                    <button type="button"  class="btn btn-info btn-sm" ng-click="viewPosts()" ng-disabled="viewPostButton">View Posts</button>
-                    <button type="button"  class="btn btn-info btn-sm" ng-click="hidePosts()" ng-disabled="hidePostButton">Hide Posts</button>
-            
-            <br/>
-                
-                <div class="col-md-4 col-sm-4" ng-repeat="post in postsOfDonor" id="displayitem" ng-show="showPosts">
-                        
-                      <label> <h3>Post</h3></label>
-                    <br/>
-                        <strong> Posted On:</strong> {{post.creation_date | date: 'dd-MM-yyyy'}}<br/>
-                        <strong>Items:</strong>
-                        <div ng-repeat="item in post.items"> {{item.item}} - {{item.quantity}}</div>
-                        <strong>Expires On:</strong>{{post.expiry_date| date: 'dd-MM-yyyy'}}
-                    <br/><br/>
-                    <button type="button" class="btn btn-success btn-lg" ng-click=""> Claims</button>
-                    <button type="button" class="btn btn-info btn-sm" ng-click="deletePost(post._id)"> Delete</button>
-                    <button type="button" class="btn btn-info btn-sm" ng-click="updatePost()"> Update</button>
-                    </div>
-            
-            <div alert alert-warning ng-show="showPostError" style="background:#d9b3ff">
-                You have not posted Yet!
-            </div>
-         
-        </div>
+            <section id="donorPost">
+                <div class="well well col-lg-12">
+
+                        <h3>Your Posts:</h3>
+
+
+                               <h6>You have {{numberOfPosts}} posts!</h6>
+                                <button type="button"  class="btn btn-info btn-sm" ng-click="viewPosts()" ng-disabled="viewPostButton">View Posts</button>
+                                <button type="button"  class="btn btn-info btn-sm" ng-click="hidePosts()" ng-disabled="hidePostButton">Hide Posts</button>
+
+                        <br/>
+
+                            <div class="col-md-4 col-sm-4" ng-repeat="post in postsOfDonor" id="displayitem" ng-show="showPosts">
+
+                                  <label> <h3>Post</h3></label>
+                                <br/>
+                                    <strong> Posted On:</strong> {{post.creation_date | date: 'dd-MM-yyyy'}}<br/>
+                                    <strong>Items:</strong>
+                                    <div ng-repeat="item in post.items"> {{item.item}} - {{item.quantity}}</div>
+                                    <strong>Expires On:</strong>{{post.expiry_date| date: 'dd-MM-yyyy'}}
+                                <br/><br/>
+                                <button type="button" class="btn btn-success btn-lg" ng-click=""> Claims</button>
+                                <button type="button" class="btn btn-info btn-sm" ng-click="deletePost(post._id)"> Delete</button>
+                                <button type="button" class="btn btn-info btn-sm" ng-click="updatePost()"> Update</button>
+                                </div>
+
+                        <div alert alert-warning ng-show="showPostError" style="background:#d9b3ff">
+                            You have not posted Yet!
+                        </div>
+
+                </div>
+            </section>
     </section>
 </div>

@@ -81,7 +81,10 @@
                         <a class="page-scroll" ng-show="authenticated && role=='DONOR'" ng-href="#donate">Donate Item</a>
                     </li>
                     <li>
-                        <a class="page-scroll" ng-show="authenticated" ng-href="#donorProfile">Profile </a>
+                        <a class="page-scroll" ng-show="authenticated && role=='DONOR'" ng-href="#donorProfile">Profile </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" ng-show="authenticated && role=='ORPHANAGE'" ng-href="#orphanageProfile">Profile </a>
                     </li>
                     <li>
                         <a class="page-scroll" ng-show="authenticated && role=='ORPHANAGE'" href="#claims">Claims</a>

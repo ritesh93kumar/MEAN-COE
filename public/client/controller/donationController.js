@@ -29,6 +29,16 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
             console.log("Couldnot get donor data");});
     };
     
+    
+    function getOrphanageById(){
+        donationFactory.getOrphanageById($sessionStorage.user.current_user).then(function(response){
+            $scope.orphanage=response.data;
+            console.log("Orphanage object");
+            console.log(response);
+          },function(error){
+            console.log("Couldnot get orphanage data");});
+    };
+    
      function getPostsOfDonor(){
         donationFactory.getPostsByDonorName($sessionStorage.user.current_user).then(function(response){
             $scope.postsOfDonor=response.data;
@@ -71,6 +81,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         
     };
         getDonorById();
+    getOrphanageById();
  		getPostsOfDonor();
         getDonors();
         getPosts();

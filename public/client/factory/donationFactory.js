@@ -36,5 +36,9 @@ easyDonations.factory('donationFactory', ['$http', function($http){
       return $http.put('/api/posts/'+id,data);
     };
     
+    donationFactory.getOrphanageById = function (id) {
+        return $http.get('/api/orphanages/'+id);
+    };
+    
     return donationFactory;
 }]);

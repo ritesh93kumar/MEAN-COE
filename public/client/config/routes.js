@@ -38,4 +38,8 @@ easyDonations.config(function($routeProvider){
                 templateUrl : 'views/claims.html',
                 controller : 'claimsController'
         })
+        .when('/orphanageProfile',{
+            templateUrl : 'views/orphanageProfile.html',
+			controller : 'donationController'
+        })
 });
