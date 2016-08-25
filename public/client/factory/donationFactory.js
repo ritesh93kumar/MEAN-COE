@@ -31,10 +31,10 @@ easyDonations.factory('donationFactory', ['$http', function($http){
     donationFactory.getPostsByDonorName=function (id){
         return $http.get('/api/posts/postedBy/'+id);
     };
-//	dataFactory.updatePosts = function () {
+	donationFactory.updatePosts = function (id,data) {
 		// To be implemented
-//        return $http.put('/api/posts');
-//    };
+      return $http.put('/api/posts/'+id,data);
+    };
     
     return donationFactory;
 }]);

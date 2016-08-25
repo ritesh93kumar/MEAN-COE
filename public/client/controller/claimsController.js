@@ -1,6 +1,6 @@
 var easyDonations=angular.module('easyDonations');
 
-easyDonations.controller('claimsController', function($scope, $http){
+easyDonations.controller('claimsController', function($scope, $http, $sessionStorage){
     
     console.log('claims contlr');
     
@@ -36,4 +36,5 @@ easyDonations.controller('claimsController', function($scope, $http){
             getDetails();
         });        
     };
+    
 });

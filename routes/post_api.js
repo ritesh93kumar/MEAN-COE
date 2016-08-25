@@ -71,16 +71,7 @@ router.route('/posts/:id')
                 var itemObj = { item: req.body.items[i].item, quantity:req.body.items[i].quantity };
                 post.items.push(itemObj);
             }
-            
-            for(var claim in req.body.claims){
-				// Make changes here just in case
-				// Pushing all the claims in the Claims array
-				post.claims.push(claim);
-			}
-            post.updation_date = req.body.updation_date;
-            post.expiry_date = req.body.expiry_date;
-            post.activated = req.body.activated;
-            
+            post.claims.push(req.body.claims);
             post.save(function(err, post){
                 if(err){
                     res.send(500, err);

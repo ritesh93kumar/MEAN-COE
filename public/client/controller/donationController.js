@@ -62,7 +62,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
                 */
                     if($scope.posts[i].posted_by ==$scope.donors[j]._id)
                     {
-                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity});
+                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id});
                         console.log("postDetails");
                         
                     }
@@ -155,6 +155,15 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 		$scope.item.quantity = "";
 		console.log("Added Items : ");
 		console.log($scope.items);
-	}
+	};
+    
+    $scope.claimForThisPost = function(postId){
+        console.log("Inside claimForThisPost");
+        //var id = $sessionStorage.user._id;
+       
+        var claimsObj={"claims":$sessionStorage.user._id};
+        donationFactory.updatePosts(postId,claimsObj);
+       
+    };
 	
 }]);
