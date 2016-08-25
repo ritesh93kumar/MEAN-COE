@@ -91,8 +91,8 @@ module.exports = function(passport){
                 donor.name = req.body.name;
                 
                 donor.address.country="India";
-                donor.address.state="Goa";
-                donor.address.city="Margao";
+                donor.address.state="Karnataka";
+                donor.address.city="Belgaum";
                 donor.address.zip_code=590006;
                 donor.email=username;
                 donor.contact_no=req.body.contact;
