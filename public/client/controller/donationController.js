@@ -1,6 +1,6 @@
 var easyDonations=angular.module('easyDonations');
 
-easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout','$rootScope', function($scope, $http, $sessionStorage, donationFactory,$timeout,$rootScope){
+easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout','$rootScope','$location', function($scope, $http, $sessionStorage, donationFactory,$timeout,$rootScope,$location){
     
 	console.log("inside view donations controller");
      $scope.hidePostButton=true;
@@ -72,7 +72,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
                 */
                     if($scope.posts[i].posted_by ==$scope.donors[j]._id)
                     {
-                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"loaction":$scope.donors[j].address.city});
+                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"loaction":$scope.donors[j].address.city,"claims":$scope.posts[i].claims});
                         console.log("postDetails");
                         
                     }
@@ -168,12 +168,18 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 		console.log($scope.items);
 	};
     
-    $scope.claimForThisPost = function(postId){
+    $scope.claimForThisPost = function(postId, claims){
         console.log("Inside claimForThisPost");
         //var id = $sessionStorage.user._id;
-       
+        console.log(claims);
         var claimsObj={"claims":$sessionStorage.user._id};
-        donationFactory.updatePosts(postId,claimsObj);
+        
+        if($.inArray($sessionStorage.user._id, claims) > -1)
+            alert("You have Already Claimed for this Post");
+        else
+            donationFactory.updatePosts(postId,claimsObj).then(function(response){
+                $location.path("/");
+            });
        
     };
 	
