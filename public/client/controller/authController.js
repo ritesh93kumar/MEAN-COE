@@ -31,6 +31,8 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
                 $scope.error_message = data.message;
                 alert("Opps Login unsuccessful !");
             }
+        }).error(function(err){
+            alert("Incorrect Username/Password");
         });
       };
     

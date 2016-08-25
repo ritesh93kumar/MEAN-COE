@@ -38,6 +38,8 @@ easyDonations.controller('signupController',['$scope','$http','$sessionStorage',
                 $scope.error_message = data.message;
                 alert("Opps some error occurred !");
             }
+        }).error(function(err){
+            alert("Opps signUp unsuccessful !");
         });
     };
     
@@ -60,6 +62,8 @@ easyDonations.controller('signupController',['$scope','$http','$sessionStorage',
                 $scope.error_message = data.message;
                 alert("Opps some error occurred !");
             }
+        }).error(function(err){
+            alert("Opps signUp unsuccessful !");
         });
     }; 
 
