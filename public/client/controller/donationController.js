@@ -3,8 +3,9 @@ var easyDonations=angular.module('easyDonations');
 easyDonations.controller('donationController',['$scope', '$http', '$sessionStorage', 'donationFactory','$timeout','$rootScope','$location', function($scope, $http, $sessionStorage, donationFactory,$timeout,$rootScope,$location){
     
 	console.log("inside view donations controller");
-     $scope.hidePostButton=true;
+    $scope.hidePostButton=true;
 	$scope.items = [];
+    
 	if($sessionStorage.user){
 		// Only if Session is Set
 		$scope.posted_by = $sessionStorage.user.current_user;
@@ -50,8 +51,7 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
     };
     
     function getPosts() {
-        donationFactory.getPosts()
-        .then(function (response){
+        donationFactory.getPosts().then(function (response){
             $scope.posts = response.data;
             console.log("POST OBJECT");
             console.log(response);
@@ -60,72 +60,60 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
         });
     };
    
-     $scope.getAllDetails=function(){
-         $scope.postDetails=[];
-        console.log("Inside GetAll");
-        for(i in $scope.posts)
-        {
-            for(j in $scope.donors)
-            {
-                  /* console.log($scope.posts[i].posted_by);
-                   console.log($scope.posts[i].items);
-                */
-                    if($scope.posts[i].posted_by ==$scope.donors[j]._id)
-                    {
-                        $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"loaction":$scope.donors[j].address.city,"claims":$scope.posts[i].claims});
-                        console.log("postDetails");
-                        
-                    }
-            }
-        }
+    $scope.getAllDetails=function(){
+    $scope.postDetails=[];
+    console.log("Inside GetAll");
         
+        for(i in $scope.posts){
+            for(j in $scope.donors){  
+                if($scope.posts[i].posted_by ==$scope.donors[j]._id){
+                    $scope.postDetails.push({"name":$scope.donors[j].name,"items":$scope.posts[i].items,"quantity":$scope.posts[i].quantity,"postedBy":$scope.posts[i].posted_by,"postId":$scope.posts[i]._id,"loaction":$scope.donors[j].address.city,"claims":$scope.posts[i].claims});
+                        
+                    console.log("postDetails");                        
+                }
+            }
+        }        
     };
-        getDonorById();
-    getOrphanageById();
- 		getPostsOfDonor();
-        getDonors();
-        getPosts();
-        $timeout($scope.getAllDetails, 1000);
     
+    getDonorById();
+    getOrphanageById();
+    getPostsOfDonor();
+    getDonors();
+    getPosts();
+    $timeout($scope.getAllDetails, 150);
 
-    $scope.viewPosts=function(){		
+    $scope.viewPosts=function(){	
+        
         $scope.hidePostButton=false;		
+
         console.log($rootScope.numberOfPosts);		
-        if($rootScope.numberOfPosts>0)		
-        {		
+
+        if($rootScope.numberOfPosts>0){	
             $scope.showPosts=true;		
-            $scope.showPostError=false;		
-            		
-           $scope.viewPostButton=true;		
-            		
+            $scope.showPostError=false;	
+            $scope.viewPostButton=true;	
         }		
-        else		
-        {		
-            $scope.showPosts=false;		
+       else{		
+            $scope.showPosts=false;
             $scope.showPostError=true;		
-           $scope.viewPostButton=true;		
-            		
-        }		
-        		
-        		
-    		
+            $scope.viewPostButton=true;	
+        }	
     };		
     		
     $scope.hidePosts=function(){		
-    $scope.showPosts=false;		
-    $scope.showPostError=false;		
-     $scope.viewPostButton=false;		
-         $scope.hidePostButton=true;		
+        $scope.showPosts=false;		
+        $scope.showPostError=false;		
+        $scope.viewPostButton=false;		
+        $scope.hidePostButton=true;		
     };		
     		
     $scope.deletePost=function(id){		
         donationFactory.deletePostById(id).then(function(response){		
-            $scope.deletedPost=response.data;		
-            //$http.successRedirect('/donorProfile');		
-            		
+            $scope.deletedPost=response.data;	
         },function(error){		
-            console.log("Couldnot delete post");})		
-            		
+            console.log("Couldnot delete post");
+            }
+        );
     };
     
     
@@ -141,16 +129,16 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 			"expiry_date" : $scope.expiry_date,
 			"items" : $scope.items
 		}
-		donationFactory.insertPosts(postData)
-		.then(
-			function (response){
+		donationFactory.insertPosts(postData).then(function (response){
+                $location.path("/");
+                alert("You brought smile on some one face, THANK YOU !");
 				console.log("Inserted Item : ");
 				console.log(response.data);
-			}, function(error){
+        }, function(error){
 				console.log("Could Not Insert");
-			}
+            }
 		);
-	}
+	};
     
 	$scope.addItem = function(){
 		// Create a item object and populate it
@@ -169,18 +157,23 @@ easyDonations.controller('donationController',['$scope', '$http', '$sessionStora
 	};
     
     $scope.claimForThisPost = function(postId, claims){
+        
         console.log("Inside claimForThisPost");
         //var id = $sessionStorage.user._id;
         console.log(claims);
         var claimsObj={"claims":$sessionStorage.user._id};
         
-        if($.inArray($sessionStorage.user._id, claims) > -1)
+        if($.inArray($sessionStorage.user._id, claims) > -1){
             alert("You have Already Claimed for this Post");
-        else
+        }
+        else{
             donationFactory.updatePosts(postId,claimsObj).then(function(response){
-                $location.path("/");
-            });
-       
+                    $location.path("/");
+                    alert("You claimed successfully!");
+            }, function(error){
+                console.log("Claim unsuccessful !");
+			});
+        }
     };
-	
+    
 }]);

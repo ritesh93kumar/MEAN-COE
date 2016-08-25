@@ -1,0 +1,31 @@
+<div class="row" style="background:grey">
+	<section id="donation" class="col-md-6 col-md-offset-3">
+		<div>
+			<label class="text-center h3"><b>Donate Items</b></label>
+		</div>
+		<div class="clearfix">
+			<form method="post" ng-submit="insertPosts()">
+				
+				<input type="text" ng-model="posted_by" name="posted_by" ng-hide="true" disabled>
+				
+				<input type="text" name="current_user_name" ng-model="current_user_name" disabled>
+				
+				<input type="text" ng-model="item.item" placeholder="Item Name" required>{{item.item}}
+
+				<input type="text" ng-model="item.quantity" placeholder="How Many?" required>{{item.quantity}}
+
+				<br><br>
+				<!--Add Item Function inserts the object to the Items Array-->
+				<button class="btn btn-lg btn-success outline" ng-click="addItem()"> + Add Another</button>
+				<br><br><br>
+
+				<label><b>How long are you in Town?</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="date" name="expiry_date" ng-model="expiry_date" placeholder="Enter Date">
+
+				<br><br>
+
+				<button class="btn btn-lg btn-warning outline" type="submit">Submit</button>
+			</form>
+		</div> 
+</section>
+</div>

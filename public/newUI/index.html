@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>EasyDonations</title>
+    
+    <link rel="shortcut icon" href="">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <!--<link rel="stylesheet" href="stylesheets/demo.css">-->
+    <link rel="stylesheet" href="stylesheets/animate.css">
+    <link rel="stylesheet" href="stylesheets/login.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="client/application.js"></script>
+    <script src="client/config/routes.js"></script>
+    <script src="client/controller/mainController.js"></script>
+    <script src="client/controller/signupController.js"></script>
+    <script src="client/controller/authController.js"></script>
+    <script src="client/controller/donationController.js"></script>
+	<script src="client/factory/statisticsFactory.js"></script>
+    <script src="client/factory/donationFactory.js"></script>
+    <script src="client/controller/claimsController.js"></script>
+    
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+</head>
+
+<body class="index" ng-app="easyDonations" ng-controller="mainController">
+    <nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand site-name" href="#">EasyDonations</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#services">Statistics</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" ng-show="authenticated" ng-href="#donate">Donate Item</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" ng-show="authenticated" ng-href="#donorProfile">Profile </a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#claims">Claims</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" ng-href="#viewdonation">View Donations</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href=""  ng-hide="authenticated" ng-click="loadLoginModal()">Login</a>
+                    </li>
+					<li>
+                        <a class="page-scroll" ng-show="authenticated" href="#" ng-click="signout()">Logout</a>
+                        
+                    </li>
+                </ul>
+            </div><!--.nav-collapse -->
+        </div>
+    </nav>
+    <div class="frontPage">
+        <div id="container" clas="container">
+		<header class="header intro_effect">
+			<ul ng-hide="authenticated" class="grid">
+					<li ng-click="loadDonorSignUpModal()"><h2>Donate</h2></li>
+                    <li ng-click="loadLoginModal()"><h2>Login</h2></li>
+                    <li ng-click="loadOrphanageSignUpModal()"><h2>Orphanage</h2></li>			
+			</ul>			
+			<div class="header_img animateblock">	<img src="images/6.jpg" alt="Header image">
+			</div> 
+			<div class="title col-md-6 col-md-offset-3">
+				<h1 class="title_h1" >IT'S NICE TO MEET YOU</h1>
+				<p class="title_p">Welcome To EasyDonations</p>				
+			</div>
+			<button class="first_button">Explore more<br>↓</button>
+		</header>
+    </div>
+
+    <section id="statistics" ng-init="getStatistics()">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Statistics</h2>
+                    <h3 class="section-subheading text-muted">"We make a living by What we Get, But We make a Life by What we Give."</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-heart-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Donations Made</h4>
+                    <p class="h1">{{statistics.donationsMade}}</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-home fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">Orphanages Covered</h4>
+                    <p class="h1">{{statistics.orphanages}}</p>
+                </div>
+                <div class="col-md-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                    </span>
+                    <h4 class="service-heading">No of Donors</h4>
+                    <p class="h1">{{statistics.donors}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+         
+    <div ng-view=""></div>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <script src="js/jquery.lettering.js"></script>
+    <script src="js/jquery.textillate.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    
+    
+    <script>			
+			$(document).ready(function(e) {
+			
+				title_animation();
+				$('#navbar').hide();
+                $('#statistics').hide();
+                
+				$(".first_button").click(function(e) {				
+					$(animate);
+					$(this).hide();
+                    
+                    var showElements = function(){
+                        $('#navbar').show();
+                        $('#statistics').show();
+                    };
+                    
+                setTimeout(showElements, 900);
+				});								
+				/*$(window).scroll(function(){
+					$(animate);
+					$(window).scrollTop(0);				
+				});*/
+			
+			});	
+			
+			function title_animation(){
+				$('.title_h1').textillate({ in: { effect: 'tada' }});
+				$('.title_p').textillate({ in: { effect: 'flash' }});			
+			}
+			
+			function animate(){
+				$(".header_img").css({
+					transform: 'translateY(-100%)',	
+					transition: 'transform 2s'			
+					});
+				$(".title").css({                    
+					top: '1%',                        
+                    left: '20%',
+                    'font-size': '18px',
+					color: 'white',
+					transition: 'top 2s, color 2s, font-size 0.5s'
+				});
+                $(".title_h1").text("EasyDonations").css({
+                    color: '#fed136',
+                    'font-style': 'italic',
+                    'font-family': '"Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive'
+                });
+                $('.title_p').hide();
+                $('.site-name').css({
+                    color: '#fed136',
+                    transition: 'color 2s'
+                });
+            }		
+		</script>
+    
+</body>
+</html>

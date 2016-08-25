@@ -78,20 +78,20 @@
                         <a class="page-scroll" href="#statistics">Statistics</a>
                     </li>
                     <li>
-                        <a class="page-scroll" ng-show="authenticated && role=='DONOR'" ng-href="#donate">Donate Item</a>
+                        <a class="page-scroll ngScroll" ng-show="authenticated && role=='DONOR'" ng-href="#donate">Donate Item</a>
                     </li>
                     <li>
-                        <a class="page-scroll" ng-show="authenticated && role=='DONOR'" ng-href="#donorProfile">Profile </a>
+                        <a class="page-scroll ngScroll" ng-show="authenticated && role=='DONOR'" ng-href="#donorProfile">Profile </a>
                     </li>
                     <li>
-                        <a class="page-scroll" ng-show="authenticated && role=='ORPHANAGE'" ng-href="#orphanageProfile">Profile </a>
+                        <a class="page-scroll ngScroll" ng-show="authenticated && role=='ORPHANAGE'" ng-href="#orphanageProfile ">Profile </a>
                     </li>
                     <li>
-                        <a class="page-scroll" ng-show="authenticated && role=='ORPHANAGE'" href="#claims">Claims</a>
+                        <a class="page-scroll ngScroll" ng-show="authenticated && role=='ORPHANAGE'" href="#claims">Claims</a>
                     </li>
                     <li>
                         <!--<a class="page-scroll" href="#team">Team</a>-->
-                        <a class="page-scroll" ng-show="authenticated && role=='ORPHANAGE'"ng-href="#viewdonation">View Donations</a>
+                        <a class="page-scroll ngScroll" ng-show="authenticated && role=='ORPHANAGE'"ng-href="#viewdonation">View Donations</a>
                     </li>
                     <li>
                         <a class="page-scroll" ng-href="#contact">Contact</a>
@@ -130,13 +130,13 @@
 						</button>
 					</a>
                     
-                    <a ng-href="#donate"  ng-show="authenticated && role=='DONOR'">
+                    <a class="ngScroll" ng-href="#donate"  ng-show="authenticated && role=='DONOR'">
 						<button class="btn btn-lg btn-info outline " >
 							Donate Today
 						</button>
 					</a>
                     
-                    <a ng-href="#viewdonation" ng-show="authenticated && role=='ORPHANAGE'">
+                    <a class="ngScroll" ng-href="#viewdonation" ng-show="authenticated && role=='ORPHANAGE'">
 						<button class="btn btn-lg btn-info outline" >
 							View Donations
 						</button>
@@ -186,12 +186,8 @@
 	
     </section>
     	
-	<section  id="/viewdonation">
-        <section  id="/donorProfile">
-            <section id="/donate">
-		              <div ng-view></div>
-        </section>        
-        </section>    
+	<section  class="ngViewSection" >        
+		  <div ng-view></div>          
 	</section>
 
 
@@ -288,8 +284,15 @@
     <!-- Theme JavaScript -->
     <script src="js/agency.js"></script>
 	
-	    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
-
+    <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    
+    <script>
+        $(".ngScroll").click(function() {
+            $('html, body').animate({
+                scrollTop: $(".ngViewSection").offset().top
+            }, 2000);
+        });
+    </script>
 
 </body>
 

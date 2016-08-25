@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+html,body{
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;	
+	background-color: black;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/*--navbar--*/
+.navbar li{
+    font-size: 15px;
+}
+
+.site-name{
+    color: #fed136;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+/*--Header--*/
+
+header{
+	margin-left:0;
+	padding-left:0;
+	width:100%;
+}
+
+.header_img {	
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;	
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;	
+}
+.header_img img{
+    z-index:900;
+	position: absolute;
+	top: 0em;
+	left: 0em;
+    width: 100%;
+	height: 100%;
+    /*-webkit-filter: grayscale(90%);*/
+}
+.title {
+	z-index:1000;
+	position:absolute;	
+	text-align:center;
+	top:50%;
+	left:50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+	margin: 0 auto;
+    padding: 0 1.25em;
+    width: 100%;
+    font-size: 2em;
+	color:white;
+}
+.title h1 {
+	font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 3em;
+    padding: 0 0 0.2em;
+    font-weight: 800;
+    margin: 0 auto;
+    line-height: 1;
+}
+.title p{
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-style: italic;
+	font-size:1em;
+	font-weight:500;	
+	line-height: 1;
+}
+
+/* --button--*/
+
+.first_button{
+	z-index:1000;
+	position:absolute;
+	top:90%;
+        left:50%;
+	background-color: transparent;
+        border: transparent;
+        padding: 0;
+	color:white;
+	-webkit-transform: translate(-50%,-50%);
+	transform:translate(-50%,-50%);
+        align-self: center;
+}
+.first_button:hover {	
+	font-weight:bolder;
+	color:black;
+        align-self: center;
+	transition: color 2s;	
+}
+
+/*--grid--*/
+
+.grid{
+	margin: 0;
+	padding:0;
+	position: absolute;
+	width: 100%;
+	height: 50%;
+	z-index: 0;	
+}
+.grid li{
+	position: absolute;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	cursor: pointer;
+	overflow: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.grid li:hover{
+	transform: translateY(-20px);
+}
+.grid li h2 {
+	margin: 1em;
+	color: #fff;
+	font-size: 1em;
+	position: absolute;
+	bottom: 0;
+	z-index: 100;
+}
+.grid li::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(71,63,59,0.5);
+}
+.grid li:hover::after{
+	background: rgba(71,63,59,0.1);
+	transition: background 0.5s;
+}
+.grid li:first-child {
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 33%;
+	background-image: url(../images/donate%20gift.jpg);
+}
+.grid li:nth-child(2) {
+	top: 0;
+	left: 33%;
+	height: 100%;
+	width: 33%;
+	background-image: url(../images/8.jpg);
+}
+.grid li:nth-child(3) {
+	top: 0;
+	left: 66%;
+	height: 100%;
+	width: 33%;
+	background-image: url(../images/please-donate.jpg);
+}
+
+/*Statistics*/
+
+#statistics{
+    top: 55%;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+}

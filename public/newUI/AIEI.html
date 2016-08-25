@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0018)http://aiei.co.nf/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+
+	<title>AIEI</title>
+	<meta name="description" content="This is story of everyone of you out there, about your TALENT !!!">
+	<meta name="keywords" content="AIEI, talent, india">
+	<meta name="author" content="Ritesh Kumar">
+	<link rel="stylesheet" href="./AIEI_files/style.css">
+	<link rel="stylesheet" type="text/css" href="./AIEI_files/normalize.css">
+	<link rel="stylesheet" type="text/css" href="./AIEI_files/demo.css">
+	<link rel="stylesheet" href="./AIEI_files/animate.css">
+	</head>
+
+	<body>
+		<div id="container" clas="container">
+		<header class="header intro_effect">
+			<ul class="grid">
+					<li><h2>Music</h2></li>
+					<li><h2>Pictures</h2></li>
+					<li><h2>Videos</h2></li>
+					<li><h2>Articles</h2></li>					
+			</ul>
+			<div class="coming_soon"><h1>SomeThing more awesome is coming...</h1></div>
+			<div class="header_img animateblock" style="transform: translateY(-100%); transition: transform 2s;">	  
+				<img src="./AIEI_files/beach_path-wide.jpg" alt="Header image">
+			</div> 
+			<div class="title">
+				<h1 class="title_h1" align="center">
+                    <ul>
+                        <li>AnyThing India EveryThing India</li>
+                    </ul>
+                </h1>
+				<p class="title_p" align="center">
+                    <ul>                
+                        <li>This is story of everyone of you out there, about your TALENT !!!</li
+                    </ul>
+                </p>				
+			</div>
+			<button class="first_button">Explore more<br>↓</button>
+		</header>
+		</div>
+		<script src="./AIEI_files/jquery-2.1.4.min.js"></script>
+		<script src="./AIEI_files/jquery.textillate.js"></script>
+		<script src="./AIEI_files/jquery.lettering.js"></script>
+		
+		<script>			
+			$(document).ready(function(e) {
+			
+				title_animation();
+				
+				$(".first_button").click(function(e) {				
+					$(animate);
+					$(this).hide();
+				});								
+				/*$(window).scroll(function(){
+					$(animate);
+					$(window).scrollTop(0);				
+				});*/
+			
+			});	
+			
+			function title_animation(){
+				$('.title_h1').textillate({ in: { effect: 'tada' }});
+				$('.title_p').textillate({ in: { effect: 'flash' }});			
+			}
+			
+			function animate(){
+				$(".header_img").css({
+					transform: 'translateY(-100%)',	
+					transition: 'transform 2s'			
+					});
+				$(".title").css({
+					top: '85%',
+					color: 'white',
+					transition: 'top 2s, color 2s'
+				});
+						}		
+		</script>
+	
+
+</body></html>

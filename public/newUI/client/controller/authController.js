@@ -17,19 +17,16 @@ easyDonations.controller('authController',function($scope, $http, $rootScope, $l
                 $scope.user.authenticated = true;
                 $scope.user.current_user = data.user.username;
 				$scope.user._id = data.user._id;
-                $scope.user.role=data.user.role;
                 $sessionStorage.user = $scope.user;
 
                 console.log($sessionStorage.user);
 
                 $rootScope.authenticated = $sessionStorage.user.authenticated;
-                $rootScope.role=$sessionStorage.user.role;
+
                 $location.path('/');
-                alert("Login Successful !");
             }
             else{
                 $scope.error_message = data.message;
-                alert("Opps Login unsuccessful !");
             }
         });
       };
